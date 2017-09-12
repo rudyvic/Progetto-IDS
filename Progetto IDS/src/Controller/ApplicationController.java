@@ -67,9 +67,7 @@ public class ApplicationController {
 	 */
 	private ApplicationController() {
 		controllerHome = new ControllerHome();
-		System.out.println("faccio home");
 		controllerLogin = new ControllerLogin();
-		System.out.println("faccio login");
 		initialize();
 	}
 	
