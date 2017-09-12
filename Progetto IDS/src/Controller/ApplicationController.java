@@ -1,7 +1,5 @@
 package Controller;
 
-import Controller.*;
-
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
