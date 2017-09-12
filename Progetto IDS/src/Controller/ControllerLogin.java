@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 public class ControllerLogin implements Observer {
 	private ModelLogin model;
 	private ViewLogin view;
-	//private ApplicationController controller = ApplicationController.getInstance();
+	private ApplicationController controller;
 	
 	public ControllerLogin(){
 		this.model = new ModelLogin();
@@ -27,8 +27,9 @@ public class ControllerLogin implements Observer {
 	public void update(Observable o, Object arg) {
 		if("home".equals((String)arg)){
 			// Richiamo il controller per visualizzare l'home page
-			//
-			//controller.getHomePanel();
+			controller = ApplicationController.getInstance();
+			System.out.println("stampa home");
+			controller.getHomePanel();
 		}
 	}
 

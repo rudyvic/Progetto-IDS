@@ -40,7 +40,7 @@ public class ApplicationController {
 	private JFrame frame;
 	private ControllerHome controllerHome;
 	private ControllerLogin controllerLogin;
-	private static ApplicationController controller = null;
+	private static ApplicationController applicationController = null;
 	
 	private JPanel panel;
 
@@ -51,8 +51,9 @@ public class ApplicationController {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ApplicationController window = new ApplicationController();
+					ApplicationController window = ApplicationController.getInstance();
 					window.frame.setVisible(true);
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -66,17 +67,20 @@ public class ApplicationController {
 	 */
 	private ApplicationController() {
 		controllerHome = new ControllerHome();
+		System.out.println("faccio home");
 		controllerLogin = new ControllerLogin();
+		System.out.println("faccio login");
 		initialize();
 	}
 	
 	public static ApplicationController getInstance(){
-		if(controller == null)
-			controller = new ApplicationController();
-
-		return controller;
+		if(applicationController == null){
+			applicationController = new ApplicationController();
+		}
+		return applicationController;
 	}
 	
+	// Ritorno il panel home (senza top bar)
 	public JPanel getHomePanel(){
 		return controllerHome.getPanel();
 	}

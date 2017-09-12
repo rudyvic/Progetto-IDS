@@ -4,10 +4,15 @@ import java.util.*;
 
 public class ModelLogin extends Observable {
 	
-	DatabaseQuery db = DatabaseQuery.getInstance();
+	private DatabaseQuery db = DatabaseQuery.getInstance();
 	
-	private boolean client = false;
-	private boolean admin = false;
+	private boolean client;
+	private boolean admin;
+	
+	public ModelLogin(){
+		client = false;
+		admin = false;
+	}
 	
 	public boolean checkUserPass(String user, String pass) {
 		// se è valido
