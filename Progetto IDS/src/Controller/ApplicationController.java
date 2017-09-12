@@ -67,6 +67,10 @@ public class ApplicationController {
 		controllerLogin = new ControllerLogin();
 		initialize();
 	}
+	
+	public JPanel getHomePanel(){
+		return controllerHome.getPanel();
+	}
 
 	/**
 	 * Initialize the contents of the frame.
