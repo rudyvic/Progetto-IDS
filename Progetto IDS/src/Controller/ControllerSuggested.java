@@ -11,6 +11,7 @@ public class ControllerSuggested implements Observer {
 	private ModelSuggested model;
 	private ViewSuggested view;
 
+	// ciao
 	public ControllerSuggested() {
 		this.model = new ModelSuggested();
 		this.view = new ViewSuggested(model);
