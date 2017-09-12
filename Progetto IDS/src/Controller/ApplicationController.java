@@ -80,11 +80,15 @@ public class ApplicationController {
 		return applicationController;
 	}
 	
-	// Ritorno il panel home (senza top bar)
+	// Ritorno il panel home 
 	public JPanel getHomePanel(){
 		return controllerHome.getPanel();
 	}
-
+	
+	public JPanel getLoginPanel(){
+		return controllerLogin.getPanel();
+	}
+	
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -104,6 +108,12 @@ public class ApplicationController {
 		panel = new PanelHome(controller);
 		frame.getContentPane().add(panel, BorderLayout.CENTER);*/
 	}
+	
+	public void showHome(JPanel panel) {
+		frame.getContentPane().remove(panel);
+		frame.getContentPane().add(controllerHome.getPanel(), BorderLayout.CENTER);
+		frame.revalidate();
+	}
 /*
 	public void showCarrello(Carrello carrello) {
 		frame.getContentPane().remove(panel);
@@ -114,13 +124,6 @@ public class ApplicationController {
 	
 	public void exitFromCarrello() {
 		System.out.println("Uscita dal carrelo");
-	}
-	
-	public void showHome() {
-		frame.getContentPane().remove(panel);
-		panel = new PanelHome(controller);
-		frame.getContentPane().add(panel, BorderLayout.CENTER);
-		frame.revalidate();
 	}
 	
 	public void showCatalogo(CatalogoApplicationController catalogo) {

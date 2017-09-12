@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 public class ControllerLogin implements Observer {
 	private ModelLogin model;
 	private ViewLogin view;
-	private ApplicationController controller;
+	private ApplicationController controller;			// Se metto il getInstance qui va in loop
 	
 	public ControllerLogin(){
 		this.model = new ModelLogin();
@@ -29,7 +29,7 @@ public class ControllerLogin implements Observer {
 			// Richiamo il controller per visualizzare l'home page
 			controller = ApplicationController.getInstance();
 			System.out.println("stampa home");
-			controller.getHomePanel();
+			controller.showHome(controller.getLoginPanel());
 		}
 	}
 
