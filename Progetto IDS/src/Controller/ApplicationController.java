@@ -36,13 +36,13 @@ import java.util.Observer;
 import javax.swing.JTextField;
 
 public class ApplicationController {
+	private static ApplicationController applicationController = null;
 
 	private JFrame frame;
+	private JPanel mainPanel;
+
 	private ControllerHome controllerHome;
 	private ControllerLogin controllerLogin;
-	private static ApplicationController applicationController = null;
-	
-	private JPanel panel;
 
 	/**
 	 * Launch the application.
@@ -97,7 +97,10 @@ public class ApplicationController {
 		frame.setMinimumSize(new Dimension(800,600));
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new BorderLayout(0, 0));
-		frame.add(controllerLogin.getPanel());
+		
+		mainPanel = controllerLogin.getPanel();
+		frame.getContentPane().add(mainPanel, BorderLayout.CENTER);
+		
 		/*
 		PanelTopBar panelTopBar = new PanelTopBar(controller);
 		frame.getContentPane().add(panelTopBar, BorderLayout.NORTH);
@@ -107,9 +110,10 @@ public class ApplicationController {
 		frame.getContentPane().add(panel, BorderLayout.CENTER);*/
 	}
 	
-	public void showHome(JPanel panel) {
-		frame.getContentPane().remove(panel);
-		frame.getContentPane().add(controllerHome.getPanel(), BorderLayout.CENTER);
+	public void showHome() {
+		frame.getContentPane().remove(mainPanel);
+		mainPanel = controllerHome.getPanel();
+		frame.getContentPane().add(mainPanel, BorderLayout.CENTER);
 		frame.revalidate();
 	}
 /*

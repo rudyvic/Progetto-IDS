@@ -29,7 +29,7 @@ public class ControllerLogin implements Observer {
 			// Richiamo il controller per visualizzare l'home page
 			controller = ApplicationController.getInstance();
 			System.out.println("stampa home");
-			controller.showHome(this.getPanel());
+			controller.showHome();
 		}
 	}
 
