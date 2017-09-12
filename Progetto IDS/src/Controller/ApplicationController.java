@@ -40,6 +40,7 @@ public class ApplicationController {
 	private JFrame frame;
 	private ControllerHome controllerHome;
 	private ControllerLogin controllerLogin;
+	private static ApplicationController controller = null;
 	
 	private JPanel panel;
 
@@ -61,11 +62,19 @@ public class ApplicationController {
 
 	/**
 	 * Create the application.
+	 * Application controller è un singleton
 	 */
-	public ApplicationController() {
+	private ApplicationController() {
 		controllerHome = new ControllerHome();
 		controllerLogin = new ControllerLogin();
 		initialize();
+	}
+	
+	public static ApplicationController getInstance(){
+		if(controller == null)
+			controller = new ApplicationController();
+
+		return controller;
 	}
 	
 	public JPanel getHomePanel(){
