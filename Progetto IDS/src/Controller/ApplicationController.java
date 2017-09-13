@@ -43,6 +43,7 @@ public class ApplicationController {
 
 	private ControllerHome controllerHome;
 	private ControllerLogin controllerLogin;
+	private ControllerCatalog controllerCatalog;
 
 	/**
 	 * Launch the application.
@@ -68,6 +69,7 @@ public class ApplicationController {
 	private ApplicationController() {
 		controllerHome = new ControllerHome();
 		controllerLogin = new ControllerLogin();
+		controllerCatalog = new ControllerCatalog();
 		initialize();
 	}
 	
@@ -85,6 +87,10 @@ public class ApplicationController {
 	
 	public JPanel getLoginPanel(){
 		return controllerLogin.getPanel();
+	}
+	
+	public JPanel getCatalogPanel(){
+		return controllerCatalog.getPanel();
 	}
 	
 	/**
@@ -116,6 +122,13 @@ public class ApplicationController {
 		frame.getContentPane().add(mainPanel, BorderLayout.CENTER);
 		frame.revalidate();
 	}
+	
+	public void showCatalog() {
+		frame.getContentPane().remove(mainPanel);
+		mainPanel = controllerCatalog.getPanel();
+		frame.getContentPane().add(mainPanel, BorderLayout.CENTER);
+		frame.revalidate();
+	}
 /*
 	public void showCarrello(Carrello carrello) {
 		frame.getContentPane().remove(panel);
@@ -128,12 +141,7 @@ public class ApplicationController {
 		System.out.println("Uscita dal carrelo");
 	}
 	
-	public void showCatalogo(CatalogoApplicationController catalogo) {
-		frame.getContentPane().remove(panel);
-		panel = new PanelCatalogo(catalogo,controller);
-		frame.getContentPane().add(panel, BorderLayout.CENTER);
-		frame.revalidate();
-	}
+	
 	
 	public void showCatalogoWith(CatalogoApplicationController catalogo, String nomeProdotto, String genere, String prezzoMin, String prezzoMax) {
 		frame.getContentPane().remove(panel);

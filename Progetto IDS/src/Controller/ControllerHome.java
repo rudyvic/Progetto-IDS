@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 public class ControllerHome implements Observer {
 	private ModelHome model;
 	private ViewHome view;
+	private ApplicationController controller;
 
 	public ControllerHome() {
 		this.model = new ModelHome();
@@ -26,6 +27,8 @@ public class ControllerHome implements Observer {
 		if(arg instanceof String) {
 			if("catalogWith".equals(arg)) {
 				System.out.println("Richiamare catalog with " + view.getFindText());
+				controller = ApplicationController.getInstance();
+				controller.showCatalog();
 			}
 		}
 	}
