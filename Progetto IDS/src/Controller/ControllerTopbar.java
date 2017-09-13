@@ -3,7 +3,6 @@ package Controller;
 import Model.ModelTopbar;
 import View.ViewTopbar;
 
-import java.awt.BorderLayout;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -26,19 +25,19 @@ public class ControllerTopbar implements Observer {
 		return view.getPanel();
 	}
 
-	public void aggiungiAlCarrello() {
+	public void addDiscToCart() {
 		model.addDiscToCart();
 		updateCart();
 	}
 	
-	public void rimuoviDalCarrello() {
+	public void removeFromCart() {
 		model.removeDiscToCart();
 		updateCart();
 		
 		if(model.getDiscsInCart()==0) {
 			controller.showHome();
 		} else {
-			//controller.showCarrello();
+			controller.showCart();
 		}
 	}
 	

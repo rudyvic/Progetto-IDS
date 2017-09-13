@@ -40,7 +40,7 @@ public class ApplicationController {
 
 	private JFrame frame;
 	private JPanel mainPanel;
-	private JPanel topbarPanel;
+	public ControllerTopbar controllerTopbar;
 
 	/**
 	 * Launch the application.
@@ -86,13 +86,12 @@ public class ApplicationController {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new BorderLayout(0, 0));
 
-		ControllerHome controllerHome = new ControllerHome();
-		mainPanel = controllerHome.getPanel();
+		ControllerCart controllerCart = new ControllerCart();
+		mainPanel = controllerCart.getPanel();
 		frame.getContentPane().add(mainPanel, BorderLayout.CENTER);
 		
-		ControllerTopbar controllerTopbar = new ControllerTopbar();
-		topbarPanel = controllerTopbar.getPanel();
-		frame.getContentPane().add(topbarPanel, BorderLayout.NORTH);
+		controllerTopbar = new ControllerTopbar();
+		frame.getContentPane().add(controllerTopbar.getPanel(), BorderLayout.NORTH);
 	}
 	
 	public void showHome() {
@@ -102,14 +101,15 @@ public class ApplicationController {
 		frame.getContentPane().add(mainPanel, BorderLayout.CENTER);
 		frame.revalidate();
 	}
-/*
-	public void showCarrello(Carrello carrello) {
-		frame.getContentPane().remove(panel);
-		panel = new PanelCarrello(controller,carrello);
-		frame.getContentPane().add(panel, BorderLayout.CENTER);
+
+	public void showCart() {
+		ControllerCart controllerCart = new ControllerCart();
+		frame.getContentPane().remove(mainPanel);
+		mainPanel = controllerCart.getPanel();
+		frame.getContentPane().add(mainPanel, BorderLayout.CENTER);
 		frame.revalidate();
 	}
-	
+/*
 	public void exitFromCarrello() {
 		System.out.println("Uscita dal carrelo");
 	}

@@ -1,6 +1,5 @@
 package View;
 
-import Model.Cart;
 import Model.Disc;
 import Model.ModelCart;
 
@@ -12,13 +11,7 @@ import java.util.*;
 public class ViewCart extends Observable implements Observer, ActionListener {
 	private ModelCart model;
 	private JPanel panel;
-	
-	private final JPanel userPanel = new JPanel();
-	private final JPanel adminPanel = new JPanel();
-	private final JPanel logSignPanel = new JPanel();
-	private JPanel eastPanel;
-	private JButton btnCart;
-	
+
 	public ViewCart(ModelCart model) {
 		this.model = model;
 		model.addObserver(this);

@@ -93,7 +93,9 @@ public class ModelCart extends Observable {
 	public double getTotalPrice() {
 		double price = 0.0;
 		
-		
+		for(Disc disc : cart.getCatalog()) {
+			price = price + (cart.getQuantity(disc) * disc.getPrice());
+		}
 		
 		return price;
 	}
