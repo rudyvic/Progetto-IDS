@@ -11,10 +11,9 @@ import View.ViewCatalog;
 import View.ViewHome;
 
 public class ControllerCatalog implements Observer{
-	
 	private ModelCatalog model;
 	private ViewCatalog view;
-	private ApplicationController controller;
+	private ApplicationController controller = ApplicationController.getInstance();
 	
 	public ControllerCatalog(){
 		this.model = new ModelCatalog();

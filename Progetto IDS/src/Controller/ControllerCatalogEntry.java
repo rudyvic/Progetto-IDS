@@ -10,9 +10,9 @@ import Model.ModelCatalogEntry;
 import View.ViewCatalogEntry;
 
 public class ControllerCatalogEntry implements Observer{
-
 	private ModelCatalogEntry model;
 	private ViewCatalogEntry view;
+	private ApplicationController controller = ApplicationController.getInstance();
 	
 	public ControllerCatalogEntry(Disc disc){
 		model = new ModelCatalogEntry(disc);

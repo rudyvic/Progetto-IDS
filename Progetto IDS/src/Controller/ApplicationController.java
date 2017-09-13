@@ -50,6 +50,7 @@ public class ApplicationController {
 			public void run() {
 				try {
 					ApplicationController window = ApplicationController.getInstance();
+					window.initialize();
 					window.frame.setVisible(true);
 					
 				} catch (Exception e) {
@@ -64,7 +65,7 @@ public class ApplicationController {
 	 * Application controller è un singleton
 	 */
 	private ApplicationController() {
-		initialize();
+		
 	}
 	
 	public static ApplicationController getInstance(){
@@ -77,7 +78,7 @@ public class ApplicationController {
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
+	public void initialize() {
 		frame = new JFrame();
 		frame.setTitle("ApplicationController");
 		frame.setBounds(100, 100, 800, 600);

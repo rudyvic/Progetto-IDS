@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 public class ControllerLogin implements Observer {
 	private ModelLogin model;
 	private ViewLogin view;
-	private ApplicationController controller;			// Se metto il getInstance qui va in loop
+	private ApplicationController controller = ApplicationController.getInstance();
 	
 	public ControllerLogin(){
 		this.model = new ModelLogin();

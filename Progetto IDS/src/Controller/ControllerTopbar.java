@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 public class ControllerTopbar implements Observer {
 	private ModelTopbar model;
 	private ViewTopbar view;
-	private ApplicationController controller;			// Se metto il getInstance qui va in loop
+	private ApplicationController controller = ApplicationController.getInstance();
 	
 	public ControllerTopbar(){
 		this.model = new ModelTopbar();

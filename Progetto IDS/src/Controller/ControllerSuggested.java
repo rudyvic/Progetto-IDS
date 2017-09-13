@@ -10,8 +10,8 @@ import javax.swing.JPanel;
 public class ControllerSuggested implements Observer {
 	private ModelSuggested model;
 	private ViewSuggested view;
+	private ApplicationController controller = ApplicationController.getInstance();
 
-	// ciao
 	public ControllerSuggested() {
 		this.model = new ModelSuggested();
 		this.view = new ViewSuggested(model);
