@@ -43,7 +43,6 @@ public class ApplicationController {
 
 	private ControllerHome controllerHome;
 	private ControllerLogin controllerLogin;
-	private ControllerCatalog controllerCatalog;
 
 	/**
 	 * Launch the application.
@@ -69,7 +68,6 @@ public class ApplicationController {
 	private ApplicationController() {
 		controllerHome = new ControllerHome();
 		controllerLogin = new ControllerLogin();
-		controllerCatalog = new ControllerCatalog();
 		initialize();
 	}
 	
@@ -78,19 +76,6 @@ public class ApplicationController {
 			applicationController = new ApplicationController();
 		}
 		return applicationController;
-	}
-	
-	// Ritorno il panel home 
-	public JPanel getHomePanel(){
-		return controllerHome.getPanel();
-	}
-	
-	public JPanel getLoginPanel(){
-		return controllerLogin.getPanel();
-	}
-	
-	public JPanel getCatalogPanel(){
-		return controllerCatalog.getPanel();
 	}
 	
 	/**
@@ -125,6 +110,8 @@ public class ApplicationController {
 	
 	public void showCatalog() {
 		frame.getContentPane().remove(mainPanel);
+		ControllerCatalog controllerCatalog = new ControllerCatalog();
+		controllerCatalog.showCatalogWith();
 		mainPanel = controllerCatalog.getPanel();
 		frame.getContentPane().add(mainPanel, BorderLayout.CENTER);
 		frame.revalidate();

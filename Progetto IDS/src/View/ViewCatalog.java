@@ -9,6 +9,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -32,7 +33,8 @@ public class ViewCatalog extends Observable implements Observer, ActionListener{
 	private JTextField txtPrezzoMin;
 	private JTextField txtPrezzoMax;
 	private JComboBox<String> cbxGenere;
-	private JPanel panel ;
+	private JPanel panel;
+	private JScrollPane scrollPaneElenco;
 	private ModelCatalog model;
 	
 	public ViewCatalog(ModelCatalog model, String nomeProdotto, String genere, String prezzoMin, String prezzoMax) {		
@@ -133,26 +135,38 @@ public class ViewCatalog extends Observable implements Observer, ActionListener{
 		panelCenter.add(panelCenterElenco, BorderLayout.CENTER);
 		panelCenterElenco.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
-		JScrollPane scrollPaneElenco = new JScrollPane();
+		scrollPaneElenco = new JScrollPane();
 		scrollPaneElenco.setPreferredSize(new Dimension(550, 350));
 		scrollPaneElenco.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		panelCenterElenco.add(scrollPaneElenco);
+	}
+	
+	public void setList(List<JPanel> list) {
+		JPanel listPanel = new JPanel();
+		scrollPaneElenco.setViewportView(listPanel);
+		listPanel.setLayout(new GridLayout(0, 1, 0, 0));
 		
-		JPanel panelElenco = new JPanel();
-		scrollPaneElenco.setViewportView(panelElenco);
-		panelElenco.setLayout(new GridLayout(0, 1, 5, 0));
-		
-		/*
-		for(Disc disco : model.searchCatalog(nomeProdotto, genere, Double.valueOf(prezzoMin), Double.valueOf(prezzoMax))) {
-			PanelCellaTabellaCatalogo panel = new PanelCellaTabellaCatalogo(controller,disco);
-			panelElenco.add(panel);
-			if(controller.isProdottoInCarrello(disco)) {
-				panel.setGiaNelCarrello();
-			} else if(catalogo.getQuantita(disco) <= 0) {
-				panel.prodottoTerminato(true);
-			}
+		for(JPanel p : list) {
+			listPanel.add(p);
 		}
-		*/
+		
+		panel.revalidate();
+	}
+	
+	public String getProductName(){
+		return txtCerca.getText();
+	}
+	
+	public String getGenre(){
+		return (String)cbxGenere.getSelectedItem();
+	}
+	
+	public Double getMaxPrice(){
+		return Double.valueOf(txtPrezzoMax.getText());
+	}
+	
+	public Double getMinPrice(){
+		return Double.valueOf(txtPrezzoMin.getText());
 	}
 	
 	public JPanel getPanel(){

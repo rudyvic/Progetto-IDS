@@ -26,7 +26,6 @@ public class ControllerHome implements Observer {
 	public void update(Observable o, Object arg) {
 		if(arg instanceof String) {
 			if("catalogWith".equals(arg)) {
-				System.out.println("Richiamare catalog with " + view.getFindText());
 				controller = ApplicationController.getInstance();
 				controller.showCatalog();
 			}
