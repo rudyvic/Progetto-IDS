@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Set;
 
 public class Cart extends Catalog {
-	
+	/*
 	private DatabaseQuery database;
 	private String user;
 	private boolean isLogin;
@@ -98,5 +98,5 @@ public class Cart extends Catalog {
 	public boolean contains(Disc disc) {
 		synchCart();
 		return catalog.containsKey(disc);
-	}
+	}*/
 }

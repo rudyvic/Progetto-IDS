@@ -39,9 +39,11 @@ public class ModelLogin extends Observable {
 	
 	public void setClient(){
 		client = true;
+		admin = false;
 	}
 	
 	public void setAdmin(){
 		admin = true;
+		client = false;
 	}
 }

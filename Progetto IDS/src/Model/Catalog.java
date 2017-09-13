@@ -6,8 +6,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public class Catalog {
-
-	protected Map<Disc,Integer> catalog;
+	private Map<Disc,Integer> catalog;
 	
 	public Catalog() {
 		catalog = new TreeMap<Disc,Integer>();
@@ -45,6 +44,10 @@ public class Catalog {
 	
 	public void remove(Disc disc) {
 		catalog.remove(disc);
+	}
+	
+	public void empty() {
+		catalog.clear();
 	}
 	
 	public boolean checkDiscQuantity(Disc disc, int quantity) {

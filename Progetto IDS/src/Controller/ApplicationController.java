@@ -40,9 +40,7 @@ public class ApplicationController {
 
 	private JFrame frame;
 	private JPanel mainPanel;
-
-	private ControllerHome controllerHome;
-	private ControllerLogin controllerLogin;
+	private JPanel topbarPanel;
 
 	/**
 	 * Launch the application.
@@ -66,8 +64,6 @@ public class ApplicationController {
 	 * Application controller è un singleton
 	 */
 	private ApplicationController() {
-		controllerHome = new ControllerHome();
-		controllerLogin = new ControllerLogin();
 		initialize();
 	}
 	
@@ -76,15 +72,6 @@ public class ApplicationController {
 			applicationController = new ApplicationController();
 		}
 		return applicationController;
-	}
-	
-	// Ritorno il panel home 
-	public JPanel getHomePanel(){
-		return controllerHome.getPanel();
-	}
-	
-	public JPanel getLoginPanel(){
-		return controllerLogin.getPanel();
 	}
 	
 	/**
@@ -97,20 +84,18 @@ public class ApplicationController {
 		frame.setMinimumSize(new Dimension(800,600));
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new BorderLayout(0, 0));
-		
-		mainPanel = controllerLogin.getPanel();
+
+		ControllerHome controllerHome = new ControllerHome();
+		mainPanel = controllerHome.getPanel();
 		frame.getContentPane().add(mainPanel, BorderLayout.CENTER);
 		
-		/*
-		PanelTopBar panelTopBar = new PanelTopBar(controller);
-		frame.getContentPane().add(panelTopBar, BorderLayout.NORTH);
-		controller.setPanelTopBar(panelTopBar);
-		
-		panel = new PanelHome(controller);
-		frame.getContentPane().add(panel, BorderLayout.CENTER);*/
+		ControllerTopbar controllerTopbar = new ControllerTopbar();
+		topbarPanel = controllerTopbar.getPanel();
+		frame.getContentPane().add(topbarPanel, BorderLayout.NORTH);
 	}
 	
 	public void showHome() {
+		ControllerHome controllerHome = new ControllerHome();
 		frame.getContentPane().remove(mainPanel);
 		mainPanel = controllerHome.getPanel();
 		frame.getContentPane().add(mainPanel, BorderLayout.CENTER);
@@ -141,14 +126,15 @@ public class ApplicationController {
 		frame.getContentPane().add(panel, BorderLayout.CENTER);
 		frame.revalidate();
 	}
-	
+	*/
 	public void showLogin() {
-		frame.getContentPane().remove(panel);
-		panel = new PanelLogin(controller);
-		frame.getContentPane().add(panel, BorderLayout.CENTER);
+		ControllerLogin controllerLogin = new ControllerLogin();
+		frame.getContentPane().remove(mainPanel);
+		mainPanel = controllerLogin.getPanel();
+		frame.getContentPane().add(mainPanel, BorderLayout.CENTER);
 		frame.revalidate();
 	}
-	
+	/*
 	public void showSignin() {
 		frame.getContentPane().remove(panel);
 		panel = new PanelSignin(controller);
