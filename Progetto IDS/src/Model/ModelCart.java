@@ -94,6 +94,7 @@ public class ModelCart extends Observable {
 		double price = 0.0;
 		
 		
+		
 		return price;
 	}
 }

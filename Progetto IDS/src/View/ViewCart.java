@@ -67,7 +67,7 @@ public class ViewCart extends Observable implements Observer, ActionListener {
 				*/
 		}
 		
-		lblTotalPrice.setText(Double.toString(prezzoTotale) + "€");
+		lblTotalPrice.setText(Double.toString(model.getTotalPrice()) + "€");
 	}
 	
 	public JPanel getPanel() {
