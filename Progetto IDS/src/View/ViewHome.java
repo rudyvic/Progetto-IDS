@@ -78,16 +78,15 @@ public class ViewHome extends Observable implements Observer, ActionListener {
 		btnCatalog.setForeground(new Color(0, 0, 255));
 		btnCatalog.setBorder(BorderFactory.createEmptyBorder());
 		panelCatalog.add(btnCatalog);
-		
-		/*
-		if(controller.isLogin()) {
-			JPanel panelSouth = new PanelSuggeriti(controller);
-			panel.add(panelSouth, BorderLayout.SOUTH);
-		}*/
 	}
 	
 	public JPanel getPanel() {
 		return panel;
+	}
+	
+	public void showSuggested() {
+		//JPanel panelSouth = new PanelSuggeriti(controller);
+		//panel.add(panelSouth, BorderLayout.SOUTH);
 	}
 	
 	public String getFindText() {

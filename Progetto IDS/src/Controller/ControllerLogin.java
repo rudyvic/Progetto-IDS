@@ -26,9 +26,7 @@ public class ControllerLogin implements Observer {
 	@Override
 	public void update(Observable o, Object arg) {
 		if("home".equals((String)arg)){
-			// Richiamo il controller per visualizzare l'home page
 			controller = ApplicationController.getInstance();
-			System.out.println("stampa home");
 			controller.showHome();
 		}
 	}

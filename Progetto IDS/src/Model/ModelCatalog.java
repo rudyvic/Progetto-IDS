@@ -13,7 +13,6 @@ public class ModelCatalog extends Observable{
 	private DatabaseQuery database = DatabaseQuery.getInstance();
 	private Catalog catalog;
 	
-	
 	public ModelCatalog(){
 		
 	}

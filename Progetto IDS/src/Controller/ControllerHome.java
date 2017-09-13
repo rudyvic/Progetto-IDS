@@ -10,12 +10,18 @@ import javax.swing.JPanel;
 public class ControllerHome implements Observer {
 	private ModelHome model;
 	private ViewHome view;
-	private ApplicationController controller;
+	private ApplicationController controller = ApplicationController.getInstance();
 
 	public ControllerHome() {
 		this.model = new ModelHome();
 		this.view = new ViewHome(model);
 		view.addObserver(this);
+		
+		/*
+		if(controller.isLogin()) {
+			view.showSuggested();
+		}
+		*/
 	}
 	
 	public JPanel getPanel() {
@@ -26,8 +32,7 @@ public class ControllerHome implements Observer {
 	public void update(Observable o, Object arg) {
 		if(arg instanceof String) {
 			if("catalogWith".equals(arg)) {
-				controller = ApplicationController.getInstance();
-				controller.showCatalog();
+				System.out.println("Richiamare catalog with " + view.getFindText());
 			}
 		}
 	}

@@ -3,7 +3,7 @@ package Model;
 import java.util.*;
 
 public class StoreCatalog extends Catalog {
-	
+	/*
 	private DatabaseQuery database;
 	
 	public StoreCatalog(DatabaseQuery database) {
@@ -80,5 +80,5 @@ public class StoreCatalog extends Catalog {
 	public void editDiscQuantity(Disc disc, int quantity) {
 		database.editStoreQuantity(disc.getCode(),quantity);
 		synchCatalog();
-	}
+	}*/
 }
