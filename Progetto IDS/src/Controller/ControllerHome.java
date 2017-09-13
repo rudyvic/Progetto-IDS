@@ -23,11 +23,9 @@ public class ControllerHome implements Observer {
 	
 	@Override
 	public void update(Observable o, Object arg) {
-		if(arg instanceof List) {
-			List<String> l = (List<String>)arg;
-			if("catalogWith".equals(l.get(0))) {
-				System.out.println("Richiamare catalog with");
-				
+		if(arg instanceof String) {
+			if("catalogWith".equals(arg)) {
+				System.out.println("Richiamare catalog with " + view.getFindText());
 			}
 		}
 	}

@@ -89,6 +89,10 @@ public class ViewHome extends Observable implements Observer, ActionListener {
 	public JPanel getPanel() {
 		return panel;
 	}
+	
+	public String getFindText() {
+		return txtFind.getText();
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -96,11 +100,8 @@ public class ViewHome extends Observable implements Observer, ActionListener {
 			this.setChanged();
 			this.notifyObservers("catalog");
 		} else if("btnFind".equals(e.getActionCommand())) {
-			List<String> l = new ArrayList<String>();
-			l.add("catalogWith");
-			l.add(txtFind.getText());
 			this.setChanged();
-			this.notifyObservers(l);
+			this.notifyObservers("catalogWith");
 		}
 	}
 
