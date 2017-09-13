@@ -10,7 +10,6 @@ import javax.swing.JPanel;
 public class ControllerHome implements Observer {
 	private ModelHome model;
 	private ViewHome view;
-	private ApplicationController controller = ApplicationController.getInstance();
 
 	public ControllerHome() {
 		this.model = new ModelHome();

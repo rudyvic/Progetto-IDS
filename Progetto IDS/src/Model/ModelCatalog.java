@@ -26,9 +26,8 @@ public class ModelCatalog extends Observable{
 		
 		List<Disc> cat = new ArrayList<Disc>();
 		
-		for(Map.Entry<Disc,Integer> entry : catalog.catalog.entrySet()) {
-		    Disc disc = entry.getKey();
-		    int quantity = entry.getValue();
+		for(Disc disc : catalog.getCatalog()) {
+		    int quantity = catalog.getQuantity(disc);
 		    
 		    if(quantity<=2) {
 		    	cat.add(disc);
@@ -66,7 +65,7 @@ public class ModelCatalog extends Observable{
 		synchCatalog();
 		Catalog c = new Catalog();
 		c = database.searchCatalog(title, genre, minPrice, maxPrice);
-		return new ArrayList<Disc>(c.catalog.keySet());
+		return new ArrayList<Disc>(c.getCatalog());
 	}
 
 	public void add(Disc disc, int quantity) {
