@@ -6,7 +6,7 @@ import View.ViewLogin;
 import java.util.Observable;
 import java.util.Observer;
 
-import javax.swing.JPanel;
+import javax.swing.*;
 
 public class ControllerLogin implements Observer {
 	private ModelLogin model;
@@ -36,6 +36,8 @@ public class ControllerLogin implements Observer {
 						controller.login(view.getUsername(), false, false);
 					}
 					controller.showHome();
+				} else {
+					JOptionPane.showMessageDialog(null, "Username or password wrong", "ERRORE", JOptionPane.ERROR_MESSAGE, null);
 				}
 			}
 		}
