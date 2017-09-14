@@ -21,10 +21,10 @@ public class ViewCatalogEntry extends Observable implements Observer, ActionList
 	private ModelCatalogEntry model;
 	private JPanel panel;
 	
-	private JLabel lblPrezzo;
-	private JButton btnTitolo, btnAggiungiCarrello;
-	private JPanel panelLeft;
-	private JPanel panelRight;
+	private JLabel lblPrice;
+	private JButton btnTitle, btnAddToCart;
+	private JPanel leftPanel;
+	private JPanel rightPanel;
 	
 	public ViewCatalogEntry(ModelCatalogEntry model){
 		
@@ -38,47 +38,50 @@ public class ViewCatalogEntry extends Observable implements Observer, ActionList
 		panel.setPreferredSize(new Dimension(500, 40));
 		panel.setLayout(new GridLayout(0, 2, 0, 0));
 		
-		panelLeft = new JPanel();
-		FlowLayout flowLayout = (FlowLayout) panelLeft.getLayout();
+		leftPanel = new JPanel();
+		FlowLayout flowLayout = (FlowLayout) leftPanel.getLayout();
 		flowLayout.setAlignment(FlowLayout.LEADING);
-		panel.add(panelLeft);
+		panel.add(leftPanel);
 		
-		btnTitolo = new JButton(disc.getTitle());
-		btnTitolo.setHorizontalAlignment(SwingConstants.LEFT);
-		panelLeft.add(btnTitolo);
-		btnTitolo.addActionListener(this);
-		btnTitolo.setActionCommand("btnNomeprodotto");
-		btnTitolo.setPreferredSize(new Dimension(300, 30));
-		btnTitolo.setBorder(null);
+		btnTitle = new JButton(disc.getTitle());
+		btnTitle.setHorizontalAlignment(SwingConstants.LEFT);
+		leftPanel.add(btnTitle);
+		btnTitle.addActionListener(this);
+		btnTitle.setActionCommand("btnDiscPage");
+		btnTitle.setPreferredSize(new Dimension(300, 30));
+		btnTitle.setBorder(null);
 		
-		panelRight = new JPanel();
-		FlowLayout flowLayout_1 = (FlowLayout) panelRight.getLayout();
+		rightPanel = new JPanel();
+		FlowLayout flowLayout_1 = (FlowLayout) rightPanel.getLayout();
 		flowLayout_1.setAlignment(FlowLayout.RIGHT);
-		panel.add(panelRight);
+		panel.add(rightPanel);
 		
-		lblPrezzo = new JLabel(Double.toString(disc.getPrice()) + "€");
-		panelRight.add(lblPrezzo);
+		lblPrice = new JLabel(Double.toString(disc.getPrice()) + "€");
+		rightPanel.add(lblPrice);
 		
-		btnAggiungiCarrello = new JButton("Aggiungi al carrello");
-		panelRight.add(btnAggiungiCarrello);
-		btnAggiungiCarrello.addActionListener(this);
-		btnAggiungiCarrello.setActionCommand("btnAggiungiCarrello");
-		btnAggiungiCarrello.setForeground(Color.BLUE);
-		btnAggiungiCarrello.setPreferredSize(new Dimension(135, 30));
-		btnAggiungiCarrello.setBorder(null);
+		btnAddToCart = new JButton("Add to cart");
+		rightPanel.add(btnAddToCart);
+		btnAddToCart.addActionListener(this);
+		btnAddToCart.setActionCommand("btnAddToCart");
+		btnAddToCart.setForeground(Color.BLUE);
+		btnAddToCart.setPreferredSize(new Dimension(135, 30));
+		btnAddToCart.setBorder(null);
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if("btnNomeprodotto".equals(e.getActionCommand())) {
-			System.out.println("Nome prodotto");
-		} else if("btnAggiungiCarrello".equals(e.getActionCommand())) {
-			System.out.println("Aggiungi al carrello");
+		if("btnDiscPage".equals(e.getActionCommand())) {
+			this.setChanged();
+			this.notifyObservers("disc page");
+		} else if("btnAddToCart".equals(e.getActionCommand())) {
+			this.setChanged();
+			this.notifyObservers("add to cart");
 		}
 	}
 
 	@Override
-	public void update(Observable o, Object arg) {		
+	public void update(Observable o, Object arg) {	
+		
 	}
 
 	public JPanel getPanel() {

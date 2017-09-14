@@ -82,7 +82,7 @@ public class Disc implements Comparable<Disc> {
 		this.date = date;
 	}
 
-	public String getTitolare() {
+	public String getOwner() {
 		if(musician==null) {
 			return band;
 		}

@@ -34,7 +34,13 @@ public class ControllerCatalogEntry implements Observer{
 	
 	@Override
 	public void update(Observable o, Object arg) {
-		
+		if(arg instanceof String) {
+			if("disc page".equals((String)arg)){
+				controller.showDiscPage(model.getDisc());
+			} else if("add to cart".equals((String)arg)){
+				//controller.showDiscPage(model.getDisc());
+			}
+		}
 	}
 
 }
