@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.DatabaseQuery;
 import Model.ModelHome;
 import View.ViewHome;
 
@@ -10,6 +11,9 @@ import javax.swing.JPanel;
 public class ControllerHome implements Observer {
 	private ModelHome model;
 	private ViewHome view;
+	
+	private DatabaseQuery db = DatabaseQuery.getInstance();
+	
 	private ApplicationController controller = ApplicationController.getInstance();
 
 	public ControllerHome() {
@@ -32,7 +36,7 @@ public class ControllerHome implements Observer {
 	public void update(Observable o, Object arg) {
 		if(arg instanceof String) {
 			if("catalogWith".equals(arg)) {
-  				controller.showCatalog();
+  				controller.showCatalog(view.getFindText(),null,Double.valueOf("0.00"),db.getMaxPrice());
 			}
 		}
 	}

@@ -176,10 +176,10 @@ public class ApplicationController {
 	}
 	*/
 
-	public void showCatalog() {
+	public void showCatalog(String title, String genre, Double minPrice, Double maxPrice) {
 		ControllerCatalog controllerCatalog = new ControllerCatalog();
 		frame.getContentPane().remove(mainPanel);
-		controllerCatalog.showCatalogWith();
+		controllerCatalog.showCatalogWith(title, genre, minPrice, maxPrice);
 		mainPanel = controllerCatalog.getPanel();
 		frame.getContentPane().add(mainPanel, BorderLayout.CENTER);
 		frame.revalidate();

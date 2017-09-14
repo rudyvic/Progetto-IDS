@@ -28,10 +28,11 @@ public class ControllerCatalog implements Observer{
 		return view.getPanel();
 	}
 	
-	public void showCatalogWith(){	
+	public void showCatalogWith(String title, String genre, Double minPrice, Double maxPrice){	
 		List<JPanel> list = new ArrayList<JPanel>();
-		for(Disc disc : model.searchCatalog(view.getProductName(), view.getGenre(), view.getMinPrice(),view.getMaxPrice())) {
+		for(Disc disc : model.searchCatalog(title, genre, minPrice, maxPrice)) {
 			ControllerCatalogEntry e = new ControllerCatalogEntry(disc);
+			
 			list.add(e.getPanel());
 		}
 		view.setList(list);
@@ -42,7 +43,7 @@ public class ControllerCatalog implements Observer{
 		if(arg instanceof String) {
 			if("filtro".equals(arg)) {
 				System.out.println("Ho applicato un filtro...");
-				controller.showCatalog();
+				controller.showCatalog(view.getProductName(), view.getGenre(), view.getMaxPrice(), view.getMinPrice());
 			}
 		}
 	}
