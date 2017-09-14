@@ -142,46 +142,54 @@ public class ApplicationController {
 		ControllerDiscPage controllerDiscPage = new ControllerDiscPage(disc);
 	}
 	
-	/*
 	public void showSignin() {
-		frame.getContentPane().remove(panel);
-		panel = new PanelSignin(controller);
-		frame.getContentPane().add(panel, BorderLayout.CENTER);
-		frame.revalidate();
+		/*
+		ControllerSignin controllerSignin = new ControllerSignin();
+		frame.getContentPane().remove(mainPanel);
+		mainPanel = controllerSignin.getPanel();
+		frame.getContentPane().add(mainPanel, BorderLayout.CENTER);
+		frame.revalidate();*/
 	}
 	
-	public void showPersonale() {
-		frame.getContentPane().remove(panel);
-		panel = new PanelPersonaleHome(controller);
-		frame.getContentPane().add(panel, BorderLayout.CENTER);
-		frame.revalidate();
+	public void showAdminHome() {
+		/*
+		ControllerAdminHome controllerAdminHome = new ControllerAdminHome();
+		frame.getContentPane().remove(mainPanel);
+		mainPanel = controllerAdminHome.getPanel();
+		frame.getContentPane().add(mainPanel, BorderLayout.CENTER);
+		frame.revalidate();*/
 	}
 	
-	public void showPersonaleAggiuntaDisco() {
-		frame.getContentPane().remove(panel);
-		panel = new PanelPersonaleAggiuntaDisco(controller);
-		frame.getContentPane().add(panel, BorderLayout.CENTER);
-		frame.revalidate();
+	public void showAdminAddNewDisc() {
+		/*
+		ControllerAdminAddNewDisc controllerAdminAddNewDisc = new ControllerAdminAddNewDisc();
+		frame.getContentPane().remove(mainPanel);
+		mainPanel = controllerAdminAddNewDisc.getPanel();
+		frame.getContentPane().add(mainPanel, BorderLayout.CENTER);
+		frame.revalidate();*/
 	}
 	
-	public void showPersonaleModificaQuantitaDisco() {
-		this.showPersonaleModificaQuantitaDisco(-1);
+	public void showAdminEditDiscQuantity() {
+		this.showAdminEditDiscQuantity(-1);
 	}
 	
-	public void showPersonaleModificaQuantitaDisco(int codiceDisco) {
-		frame.getContentPane().remove(panel);
-		panel = new PanelPersonaleModificaQuantitaDisco(controller,codiceDisco);
-		frame.getContentPane().add(panel, BorderLayout.CENTER);
-		frame.revalidate();
+	public void showAdminEditDiscQuantity(int discCode) {
+		/*
+		ControllerAdminEditDiscQuantity controllerAdminEditDiscQuantity = new ControllerAdminEditDiscQuantity(discCode);
+		frame.getContentPane().remove(mainPanel);
+		mainPanel = controllerAdminEditDiscQuantity.getPanel();
+		frame.getContentPane().add(mainPanel, BorderLayout.CENTER);
+		frame.revalidate();*/
 	}
 	
-	public void showPagamento(Double prezzoTot) {
-		frame.getContentPane().remove(panel);
-		panel = new PanelPagamento(controller,controller.getCarrello(),prezzoTot);
-		frame.getContentPane().add(panel, BorderLayout.CENTER);
-		frame.revalidate();
+	public void showPayment(Double price) {
+		/*
+		ControllerPayment controllerPayment = new ControllerPayment(price);
+		frame.getContentPane().remove(mainPanel);
+		mainPanel = controllerPayment.getPanel();
+		frame.getContentPane().add(mainPanel, BorderLayout.CENTER);
+		frame.revalidate();*/
 	}
-	*/
 	
 	public void login(String username, boolean isAdmin, boolean isSuper) {
 		controllerTopbar.login(username,isAdmin,isSuper);
