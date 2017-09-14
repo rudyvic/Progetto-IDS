@@ -23,6 +23,8 @@ import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import javax.swing.border.MatteBorder;
 
+import Model.Disc;
+
 import java.awt.Component;
 
 import javax.swing.Box;
@@ -135,6 +137,11 @@ public class ApplicationController {
 		frame.getContentPane().add(mainPanel, BorderLayout.CENTER);
 		frame.revalidate();
 	}
+	
+	public void showDiscPage(Disc disc) {
+		ControllerDiscPage controllerDiscPage = new ControllerDiscPage(disc);
+	}
+	
 	/*
 	public void showSignin() {
 		frame.getContentPane().remove(panel);
