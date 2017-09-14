@@ -26,9 +26,17 @@ public class ControllerLogin implements Observer {
 	@Override
 	public void update(Observable o, Object arg) {
 		if(arg instanceof String) {
-			if("home".equals((String)arg)){
-				controller = ApplicationController.getInstance();
+			if("cancel".equals((String)arg)){
 				controller.showHome();
+			} else if("login".equals((String)arg)){
+				if (model.checkUserPass(view.getUsername(),view.getPassword())){
+					if (model.isAdmin()) {
+						controller.login(view.getUsername(), true, false);
+					} else if(model.isClient()) {
+						controller.login(view.getUsername(), false, false);
+					}
+					controller.showHome();
+				}
 			}
 		}
 	}

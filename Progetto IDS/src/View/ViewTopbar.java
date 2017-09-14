@@ -126,6 +126,7 @@ public class ViewTopbar extends Observable implements Observer, ActionListener {
 	}
 	
 	public void isCartEmpty(boolean isEmpty) {
+		updateCart();
 		btnCart.setEnabled(!isEmpty);
 	}
 
@@ -133,36 +134,44 @@ public class ViewTopbar extends Observable implements Observer, ActionListener {
 		panel.remove(eastPanel);
 		panel.add(logSignPanel, BorderLayout.EAST);
 		eastPanel = logSignPanel;
+		eastPanel.repaint();
 	}
 	
 	public void showAdminPanel() {
 		panel.remove(eastPanel);
 		panel.add(adminPanel, BorderLayout.EAST);
 		eastPanel = adminPanel;
+		eastPanel.repaint();
 	}
 	
 	public void showUserPanel() {
 		panel.remove(eastPanel);
 		panel.add(userPanel, BorderLayout.EAST);
 		eastPanel = userPanel;
+		eastPanel.repaint();
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if("btnCarrello".equals(e.getActionCommand())) {
-			//controller.showCarrello();
+		if("btnCart".equals(e.getActionCommand())) {
+			this.setChanged();
+			this.notifyObservers("cart");
 		} else if("btnHome".equals(e.getActionCommand())) {
-			//controller.showHome();
+			this.setChanged();
+			this.notifyObservers("home");
 		} else if("btnLogin".equals(e.getActionCommand())) {
-			//controller.showLogin();
+			this.setChanged();
+			this.notifyObservers("login");
 		} else if("btnLogout".equals(e.getActionCommand())) {
-			/*controller.setAutenticato(false);
-			controller.setPersonale(false);
-			controller.setSuperUtente(false);
-			controller.showHome();*/
+			this.setChanged();
+			this.notifyObservers("logout");
 		} else if("btnSignin".equals(e.getActionCommand())) {
+			this.setChanged();
+			this.notifyObservers("signin");
 			//controller.showSignin();
 		} else if("btnPersonale".equals(e.getActionCommand())) {
+			this.setChanged();
+			this.notifyObservers("admin");
 			//controller.showPersonale();
 		}
 	}

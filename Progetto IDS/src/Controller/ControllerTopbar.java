@@ -67,24 +67,37 @@ public class ControllerTopbar implements Observer {
 		view.updateCart();
 	}
 	
+	public void login(String username, boolean isAdmin, boolean isSuper) {
+		model.login(username, isAdmin, isSuper);
+		updateView();
+	}
+	
+	public void logout() {
+		model.logout();
+		updateView();
+	}
+	
 	@Override
 	public void update(Observable o, Object arg) {
 		if(arg instanceof String) {
 			if("home".equals((String)arg)){
-				controller = ApplicationController.getInstance();
 				controller.showHome();
 			} else if("login".equals((String)arg)){
-				controller = ApplicationController.getInstance();
 				controller.showLogin();
 			} else if("logout".equals((String)arg)){
 				model.logout();
 				view.showLogSignPanel();
-				controller = ApplicationController.getInstance();
 				controller.showHome();
 			} else if("update".equals((String)arg)){
 				updateView();
-				controller = ApplicationController.getInstance();
 				controller.showHome();
+			} else if("signin".equals((String)arg)){
+				model.logout();
+				view.showLogSignPanel();
+				//controller.showSignin();
+			} else if("admin".equals((String)arg)){
+				updateView();
+				//controller.showAdminHome();
 			}
 		}
 	}

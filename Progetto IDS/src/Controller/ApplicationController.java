@@ -183,7 +183,13 @@ public class ApplicationController {
 	}
 	*/
 	
+	public void login(String username, boolean isAdmin, boolean isSuper) {
+		controllerTopbar.login(username,isAdmin,isSuper);
+	}
 	
+	public void logout() {
+		controllerTopbar.logout();
+	}
 
 	public void showCatalog(String title, String genre, Double minPrice, Double maxPrice) {
 		ControllerCatalog controllerCatalog = new ControllerCatalog();
