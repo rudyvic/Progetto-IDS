@@ -179,6 +179,7 @@ public class ApplicationController {
 	public void showCatalog() {
 		ControllerCatalog controllerCatalog = new ControllerCatalog();
 		frame.getContentPane().remove(mainPanel);
+		controllerCatalog.showCatalogWith();
 		mainPanel = controllerCatalog.getPanel();
 		frame.getContentPane().add(mainPanel, BorderLayout.CENTER);
 		frame.revalidate();

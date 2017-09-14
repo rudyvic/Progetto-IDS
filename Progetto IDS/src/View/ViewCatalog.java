@@ -121,7 +121,7 @@ public class ViewCatalog extends Observable implements Observer, ActionListener{
 		panelCenter.add(panelCenterElenco, BorderLayout.CENTER);
 		panelCenterElenco.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
-		JScrollPane scrollPaneElenco = new JScrollPane();
+		scrollPaneElenco = new JScrollPane();
 		scrollPaneElenco.setPreferredSize(new Dimension(550, 350));
 		scrollPaneElenco.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		panelCenterElenco.add(scrollPaneElenco);
