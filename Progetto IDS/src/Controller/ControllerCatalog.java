@@ -43,7 +43,7 @@ public class ControllerCatalog implements Observer{
 		if(arg instanceof String) {
 			if("filtro".equals(arg)) {
 				System.out.println("Ho applicato un filtro...");
-				controller.showCatalog(view.getProductName(), view.getGenre(), view.getMaxPrice(), view.getMinPrice());
+				controller.showCatalog(view.getProductName(), view.getGenre(), view.getMinPrice(), view.getMaxPrice());
 			}
 		}
 	}
