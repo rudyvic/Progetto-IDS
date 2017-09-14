@@ -175,6 +175,8 @@ public class ApplicationController {
 		frame.revalidate();
 	}
 	*/
+	
+	
 
 	public void showCatalog(String title, String genre, Double minPrice, Double maxPrice) {
 		ControllerCatalog controllerCatalog = new ControllerCatalog();
