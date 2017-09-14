@@ -1,39 +1,27 @@
 package View;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Font;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.Observable;
-import java.util.Observer;
-
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextField;
-import javax.swing.ScrollPaneConstants;
+import java.util.*;
+import java.util.List;
+import java.awt.*;
+import javax.swing.*;
 
 import Model.Catalog;
 import Model.Disc;
 import Model.ModelCatalog;
 
 public class ViewCatalog extends Observable implements Observer, ActionListener{
+	private JPanel panel ;
+	private ModelCatalog model;
 	
 	private JTextField txtCerca;
 	private JPanel panelFiltri;
 	private JTextField txtPrezzoMin;
 	private JTextField txtPrezzoMax;
 	private JComboBox<String> cbxGenere;
-	private JPanel panel ;
-	private ModelCatalog model;
+	private JScrollPane scrollPaneElenco;
+	
 	
 	public ViewCatalog(ModelCatalog model, String nomeProdotto, String genere, String prezzoMin, String prezzoMax) {		
 		
@@ -140,23 +128,40 @@ public class ViewCatalog extends Observable implements Observer, ActionListener{
 		
 		JPanel panelElenco = new JPanel();
 		scrollPaneElenco.setViewportView(panelElenco);
-		panelElenco.setLayout(new GridLayout(0, 1, 5, 0));
-		
-		/*
-		for(Disc disco : model.searchCatalog(nomeProdotto, genere, Double.valueOf(prezzoMin), Double.valueOf(prezzoMax))) {
-			PanelCellaTabellaCatalogo panel = new PanelCellaTabellaCatalogo(controller,disco);
-			panelElenco.add(panel);
-			if(controller.isProdottoInCarrello(disco)) {
-				panel.setGiaNelCarrello();
-			} else if(catalogo.getQuantita(disco) <= 0) {
-				panel.prodottoTerminato(true);
-			}
-		}
-		*/
+		panelElenco.setLayout(new GridLayout(0, 1, 0, 0));
 	}
 	
 	public JPanel getPanel(){
 		return panel;
+	}
+	
+
+	public void setList(List<JPanel> list) {
+		JPanel listPanel = new JPanel();
+		scrollPaneElenco.setViewportView(listPanel);
+		listPanel.setLayout(new GridLayout(0, 1, 0, 0));
+		
+		for(JPanel p : list) {
+			listPanel.add(p);
+		}
+		
+		panel.revalidate();
+	}
+	
+	public String getProductName(){
+		return txtCerca.getText();
+	}
+	
+	public String getGenre(){
+		return (String)cbxGenere.getSelectedItem();
+	}
+	
+	public Double getMaxPrice(){
+		return Double.valueOf(txtPrezzoMax.getText());
+	}
+	
+	public Double getMinPrice(){
+		return Double.valueOf(txtPrezzoMin.getText());
 	}
 	
 	private void comboGenere(String genere) {

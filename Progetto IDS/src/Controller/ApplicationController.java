@@ -175,4 +175,12 @@ public class ApplicationController {
 		frame.revalidate();
 	}
 	*/
+
+	public void showCatalog() {
+		ControllerCatalog controllerCatalog = new ControllerCatalog();
+		frame.getContentPane().remove(mainPanel);
+		mainPanel = controllerCatalog.getPanel();
+		frame.getContentPane().add(mainPanel, BorderLayout.CENTER);
+		frame.revalidate();
+	}
 }
