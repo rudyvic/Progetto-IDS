@@ -207,4 +207,8 @@ public class ApplicationController {
 		frame.getContentPane().add(mainPanel, BorderLayout.CENTER);
 		frame.revalidate();
 	}
+
+	public void showCartButton() {
+		controllerTopbar.addDiscToCart();
+	}
 }
