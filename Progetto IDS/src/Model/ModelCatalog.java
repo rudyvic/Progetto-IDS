@@ -64,7 +64,6 @@ public class ModelCatalog extends Observable{
 	public List<Disc> searchCatalog(String title, String genre, Double minPrice, Double maxPrice){
 		synchCatalog();
 		Catalog c = database.searchCatalog(title, genre, minPrice, maxPrice);
-		System.out.println(c.length());
 		return c.getCatalog();
 	}
 

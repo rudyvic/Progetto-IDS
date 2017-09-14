@@ -78,6 +78,12 @@ public class ViewCatalogEntry extends Observable implements Observer, ActionList
 			this.notifyObservers("add to cart");
 		}
 	}
+	
+	public void inTheCart() {
+		btnAddToCart.setEnabled(false);
+		btnAddToCart.setText("in the cart");
+		btnAddToCart.setBorder(null);
+	}
 
 	@Override
 	public void update(Observable o, Object arg) {	
