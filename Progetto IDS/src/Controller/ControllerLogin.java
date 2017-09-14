@@ -25,9 +25,11 @@ public class ControllerLogin implements Observer {
 	
 	@Override
 	public void update(Observable o, Object arg) {
-		if("home".equals((String)arg)){
-			controller = ApplicationController.getInstance();
-			controller.showHome();
+		if(arg instanceof String) {
+			if("home".equals((String)arg)){
+				controller = ApplicationController.getInstance();
+				controller.showHome();
+			}
 		}
 	}
 

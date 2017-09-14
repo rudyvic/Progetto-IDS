@@ -16,7 +16,7 @@ public class ViewDiscPage extends Observable implements Observer, ActionListener
 	
 	private JFrame frame;
 	
-	private ViewDiscPage(ModelDiscPage model) {
+	public ViewDiscPage(ModelDiscPage model) {
 		this.model = model;
 		model.addObserver(this);
 		
@@ -26,6 +26,7 @@ public class ViewDiscPage extends Observable implements Observer, ActionListener
 		frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.setBounds(100, 100, 529, 313);
+		frame.setAlwaysOnTop(true);
 		panel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		panel.setLayout(new BorderLayout(0, 0));
 		frame.setContentPane(panel);
