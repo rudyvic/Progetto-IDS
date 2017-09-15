@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.Disc;
 import Model.ModelCart;
 import View.ViewCart;
 
@@ -21,6 +22,14 @@ public class ControllerCart implements Observer {
 	
 	public JPanel getPanel() {
 		return view.getPanel();
+	}
+	
+	public boolean contains(Disc d){
+		return model.contains(d);
+	}
+	
+	public void add(Disc d){
+		model.add(d, 1);
 	}
 	
 	@Override

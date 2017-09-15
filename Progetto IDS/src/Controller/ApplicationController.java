@@ -208,7 +208,14 @@ public class ApplicationController {
 		frame.revalidate();
 	}
 
-	public void showCartButton() {
+	public void discInTheCart(Disc d) {
+		ControllerCart controllerCart = new ControllerCart();
+		controllerCart.add(d);
 		controllerTopbar.addDiscToCart();
+	}
+	
+	public boolean cartContains(Disc d){
+		ControllerCart c = new ControllerCart();
+		return c.contains(d);
 	}
 }

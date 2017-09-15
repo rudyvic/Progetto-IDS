@@ -81,7 +81,7 @@ public class ViewCatalogEntry extends Observable implements Observer, ActionList
 	
 	public void inTheCart() {
 		btnAddToCart.setEnabled(false);
-		btnAddToCart.setText("in the cart");
+		btnAddToCart.setText("In the cart");
 		btnAddToCart.setBorder(null);
 	}
 
@@ -92,6 +92,19 @@ public class ViewCatalogEntry extends Observable implements Observer, ActionList
 
 	public JPanel getPanel() {
 		return panel;
+	}
+
+	public void terminatedProduct(boolean b) {
+		if(b) {
+			btnAddToCart.setEnabled(false);
+			btnAddToCart.setText("Sold out");
+			btnAddToCart.setBorder(null);
+		} else {
+			btnAddToCart.setEnabled(true);
+			btnAddToCart.setText("Add to cart");
+			btnAddToCart.setBorder(null);
+		}
+		
 	}
 
 }

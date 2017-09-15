@@ -13,17 +13,19 @@ public class ControllerCatalogEntry implements Observer{
 	private ModelCatalogEntry model;
 	private ViewCatalogEntry view;
 	private ApplicationController controller = ApplicationController.getInstance();
+	private Disc disc;
 	
 	public ControllerCatalogEntry(Disc disc){
+		this.disc = disc;
 		model = new ModelCatalogEntry(disc);
 		view = new ViewCatalogEntry(model);
 		view.addObserver(this);
 		
-/*
-		if(controller.isProdottoInCarrello(disco)) {
-			panel.setGiaNelCarrello();
-		} else if(catalogo.getQuantita(disco) <= 0) {
-			panel.prodottoTerminato(true);
+		if(controller.cartContains(disc)) {
+			System.out.println("contains");
+			view.inTheCart();
+		} /*else if(model.getQuantity(disc) <= 0) {
+			view.terminatedProduct(true);
 		}
 		*/
 	}
@@ -40,7 +42,8 @@ public class ControllerCatalogEntry implements Observer{
 			} else if("add to cart".equals((String)arg)){
 				System.out.println("add to cart");
 				view.inTheCart();
-				controller.showCartButton();
+				System.out.println(disc.getTitle());
+				controller.discInTheCart(disc);
 			}
 		}
 	}

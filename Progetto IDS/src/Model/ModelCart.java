@@ -59,6 +59,8 @@ public class ModelCart extends Observable {
 			database.insertCart(disc.getCode(),username, quantity);
 			synchCart();
 		} else {
+			System.out.println("CART ADD");
+			System.out.println(disc.getTitle());
 			cart.add(disc, quantity);
 		}
 	}
