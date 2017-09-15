@@ -152,12 +152,11 @@ public class ApplicationController {
 	}
 	
 	public void showAdminHome() {
-		/*
 		ControllerAdminHome controllerAdminHome = new ControllerAdminHome();
 		frame.getContentPane().remove(mainPanel);
 		mainPanel = controllerAdminHome.getPanel();
 		frame.getContentPane().add(mainPanel, BorderLayout.CENTER);
-		frame.revalidate();*/
+		frame.revalidate();
 	}
 	
 	public void showAdminAddNewDisc() {
