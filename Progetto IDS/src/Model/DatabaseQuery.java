@@ -158,8 +158,13 @@ public class DatabaseQuery {
 		 if(title != null || genre != null || minPrice != null || maxPrice != null) {
 			 query += " WHERE ";
 		 }
+		 
 		 if(title != null){
 			 query += "D.titolo LIKE " + "'%" + title + "%'";
+		 }
+		 
+		 if(title != null && genre != null) {
+			 query += " AND ";
 		 }
 		 
 		 if(genre != null){

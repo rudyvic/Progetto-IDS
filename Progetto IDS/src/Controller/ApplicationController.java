@@ -152,12 +152,11 @@ public class ApplicationController {
 	}
 	
 	public void showAdminHome() {
-		/*
 		ControllerAdminHome controllerAdminHome = new ControllerAdminHome();
 		frame.getContentPane().remove(mainPanel);
 		mainPanel = controllerAdminHome.getPanel();
 		frame.getContentPane().add(mainPanel, BorderLayout.CENTER);
-		frame.revalidate();*/
+		frame.revalidate();
 	}
 	
 	public void showAdminAddNewDisc() {
@@ -200,7 +199,7 @@ public class ApplicationController {
 	}
 
 	public void showCatalog(String title, String genre, Double minPrice, Double maxPrice) {
-		ControllerCatalog controllerCatalog = new ControllerCatalog();
+		ControllerCatalog controllerCatalog = new ControllerCatalog(title,genre,minPrice,maxPrice);
 		frame.getContentPane().remove(mainPanel);
 		controllerCatalog.showCatalogWith(title, genre, minPrice, maxPrice);
 		mainPanel = controllerCatalog.getPanel();

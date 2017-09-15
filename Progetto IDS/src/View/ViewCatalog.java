@@ -167,17 +167,21 @@ public class ViewCatalog extends Observable implements Observer, ActionListener{
 	private void comboGenere(String genere) {
 		DefaultComboBoxModel<String> cbxModel = new DefaultComboBoxModel<String>();
 		Catalog c = model.synchCatalog();
-		ArrayList <String> gen = new ArrayList <String> ();
-		for (Disc d : c.getCatalog()){
-			System.out.println(d.getGenre());
-			if(!gen.contains(d.getGenre())){
-				gen.add(d.getGenre());
-				cbxModel.addElement(d.getGenre());
+		List<String> gen = new ArrayList<String>();
+		gen.add("-");
+		cbxModel.addElement("-");
+		for (Disc disc : c.getCatalog()){
+			if(!gen.contains(disc.getGenre())){
+				gen.add(disc.getGenre());
+				cbxModel.addElement(disc.getGenre());
 			}
+		}		
+		
+		if(genere==null) {
+			genere = "-";
 		}
 		
 		cbxGenere.setModel(cbxModel);
-		
 		cbxGenere.removeActionListener(this);
 		cbxGenere.setSelectedItem(genere);
 		cbxGenere.addActionListener(this);

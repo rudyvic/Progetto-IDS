@@ -14,6 +14,8 @@ public class ViewTopbar extends Observable implements Observer, ActionListener {
 	private final JPanel userPanel = new JPanel();
 	private final JPanel adminPanel = new JPanel();
 	private final JPanel logSignPanel = new JPanel();
+	private JLabel lblUserUsername = new JLabel("Username");
+	private JLabel lblAdminUsername = new JLabel("Username");
 	private JPanel eastPanel;
 	private JButton btnCart;
 	
@@ -31,7 +33,6 @@ public class ViewTopbar extends Observable implements Observer, ActionListener {
 		adminPanel.setBackground(Color.ORANGE);
 		adminPanel.setLayout(new GridLayout(2, 1, 0, 0));
 		
-		JLabel lblAdminUsername = new JLabel("Username");
 		adminPanel.add(lblAdminUsername);
 		
 		Component horizontalStrut = Box.createHorizontalStrut(20);
@@ -51,8 +52,7 @@ public class ViewTopbar extends Observable implements Observer, ActionListener {
 		userPanel.setBackground(Color.MAGENTA);
 		userPanel.setLayout(new GridLayout(2, 1, 0, 0));
 		
-		JLabel lblUser = new JLabel("Username");
-		userPanel.add(lblUser);
+		userPanel.add(lblUserUsername);
 		
 		JButton btnUserLogout = new JButton("Log Out");
 		userPanel.add(btnUserLogout);
@@ -138,6 +138,7 @@ public class ViewTopbar extends Observable implements Observer, ActionListener {
 	}
 	
 	public void showAdminPanel() {
+		lblAdminUsername.setText(model.getUsername());
 		panel.remove(eastPanel);
 		panel.add(adminPanel, BorderLayout.EAST);
 		eastPanel = adminPanel;
@@ -145,6 +146,7 @@ public class ViewTopbar extends Observable implements Observer, ActionListener {
 	}
 	
 	public void showUserPanel() {
+		lblUserUsername.setText(model.getUsername());
 		panel.remove(eastPanel);
 		panel.add(userPanel, BorderLayout.EAST);
 		eastPanel = userPanel;
