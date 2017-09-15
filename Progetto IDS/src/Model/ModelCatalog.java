@@ -21,16 +21,16 @@ public class ModelCatalog extends Observable{
 		return database.getMaxPrice();
 	}
 	
-	public List<Disc> getCatalogRunningOut() {
+	public Catalog getCatalogRunningOut() {
 		synchCatalog();
 		
-		List<Disc> cat = new ArrayList<Disc>();
+		Catalog cat = new Catalog();
 		
 		for(Disc disc : catalog.getCatalog()) {
 		    int quantity = catalog.getQuantity(disc);
 		    
 		    if(quantity<=2) {
-		    	cat.add(disc);
+		    		cat.add(disc, quantity);
 		    }
 		}
 		
