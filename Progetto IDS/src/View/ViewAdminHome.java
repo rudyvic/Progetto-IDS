@@ -4,12 +4,9 @@ import Model.Catalog;
 import Model.Disc;
 import Model.ModelAdminHome;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
+import java.awt.*;
 
-import javax.swing.JButton;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -21,6 +18,7 @@ public class ViewAdminHome extends Observable implements Observer, ActionListene
 	private ModelAdminHome model;
 	private JPanel panel;
 	
+	private JPanel runningOutDiscsPanel;
 	private JPanel listCatalogPanel;
 	
 	public ViewAdminHome(ModelAdminHome model) {
@@ -29,18 +27,59 @@ public class ViewAdminHome extends Observable implements Observer, ActionListene
 		
 		panel = new JPanel();
 		
+		panel.setPreferredSize(new Dimension(600, 500));
 		panel.setLayout(new BorderLayout(0, 0));
 		
-		listCatalogPanel = new JPanel();
-		listCatalogPanel.setPreferredSize(new Dimension(500, 200));
-		panel.add(listCatalogPanel, BorderLayout.CENTER);
-		listCatalogPanel.setLayout(new GridLayout(1, 5, 0, 0));
+		JPanel northPanel = new JPanel();
+		panel.add(northPanel, BorderLayout.NORTH);
+		
+		JLabel lblDescription = new JLabel("<html>Welcome in this admin homepage. Here you can see which discs are running out of stock and change their quantity, or you can add new discs to the catalog.");
+		lblDescription.setPreferredSize(new Dimension(500, 100));
+		northPanel.add(lblDescription);
+		
+		runningOutDiscsPanel = new JPanel();
+		panel.add(runningOutDiscsPanel, BorderLayout.WEST);
+		runningOutDiscsPanel.setLayout(new BorderLayout(0, 0));
+		
+		JPanel northRunningOutDiscsPanel = new JPanel();
+		runningOutDiscsPanel.add(northRunningOutDiscsPanel, BorderLayout.NORTH);
+		
+		JLabel lblRunningOutDiscs = new JLabel("Discs running out:");
+		northRunningOutDiscsPanel.add(lblRunningOutDiscs);
+		
+		JPanel centerRunningOutDiscsPanel = new JPanel();
+		runningOutDiscsPanel.add(centerRunningOutDiscsPanel, BorderLayout.CENTER);
+		
+		JPanel tableRunningOutDiscsPanel = new JPanel();
+		centerRunningOutDiscsPanel.add(tableRunningOutDiscsPanel);
+		tableRunningOutDiscsPanel.setLayout(new GridLayout(0, 1, 0, 0));
+		
+		JPanel centerPanel = new JPanel();
+		FlowLayout flowLayout = (FlowLayout) centerPanel.getLayout();
+		flowLayout.setVgap(50);
+		panel.add(centerPanel, BorderLayout.CENTER);
+		
+		JButton btnAddDisc = new JButton("Add new disc");
+		btnAddDisc.addActionListener(this);
+		btnAddDisc.setActionCommand("btnAddDisc");
+		btnAddDisc.setFont(new Font("Lucida Grande", Font.BOLD, 20));
+		btnAddDisc.setPreferredSize(new Dimension(300, 100));
+		centerPanel.add(btnAddDisc);
+		
+		JButton btnEditDiscQuantity = new JButton("Edit discs quantity");
+		btnEditDiscQuantity.addActionListener(this);
+		btnEditDiscQuantity.setActionCommand("btnEditDiscQuantity");
+		btnEditDiscQuantity.setFont(new Font("Lucida Grande", Font.BOLD, 20));
+		btnEditDiscQuantity.setPreferredSize(new Dimension(300, 100));
+		centerPanel.add(btnEditDiscQuantity);
 	}
 	
 	public void fillCatalogRunningOut() {
-		panel.remove(listCatalogPanel);
+		runningOutDiscsPanel.removeAll();
 		listCatalogPanel = new JPanel();
-		panel.add(listCatalogPanel);
+		runningOutDiscsPanel.add(listCatalogPanel, BorderLayout.CENTER);
+		listCatalogPanel.setPreferredSize(new Dimension(500, 200));
+		listCatalogPanel.setLayout(new GridLayout(1, 0, 0, 0));
 		
 		Catalog cat = model.getCatalogRunningOut();
 		for(Disc disc : cat.getCatalog()) {
@@ -64,6 +103,7 @@ public class ViewAdminHome extends Observable implements Observer, ActionListene
 		}
 		
 		panel.repaint();
+		panel.revalidate();
 	}
 	
 	public JPanel getPanel() {
@@ -72,7 +112,13 @@ public class ViewAdminHome extends Observable implements Observer, ActionListene
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (e.getActionCommand().contains("btn")) {
+		if("btnAddDisc".equals(e.getActionCommand())) {
+			this.setChanged();
+			this.notifyObservers("add disc");
+		} else if("btnEditDiscQuantity".equals(e.getActionCommand())) {
+			this.setChanged();
+			this.notifyObservers("edit discs quantity");
+		} else if (e.getActionCommand().contains("btn")) {
 			String discCode = e.getActionCommand().substring(3, e.getActionCommand().length());
 			this.setChanged();
 			this.notifyObservers(Integer.valueOf(discCode));

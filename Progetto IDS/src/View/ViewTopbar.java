@@ -170,11 +170,9 @@ public class ViewTopbar extends Observable implements Observer, ActionListener {
 		} else if("btnSignin".equals(e.getActionCommand())) {
 			this.setChanged();
 			this.notifyObservers("signin");
-			//controller.showSignin();
-		} else if("btnPersonale".equals(e.getActionCommand())) {
+		} else if("btnAdmin".equals(e.getActionCommand())) {
 			this.setChanged();
 			this.notifyObservers("admin");
-			//controller.showPersonale();
 		}
 	}
 
