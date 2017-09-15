@@ -217,4 +217,9 @@ public class ApplicationController {
 		ControllerCart controllerCart = ControllerCart.getInstance();
 		return controllerCart.contains(d);
 	}
+	
+	public int getQuantity(Disc d){
+		ControllerCatalog controllerCatalog = new ControllerCatalog();
+		return controllerCatalog.getQuantity(d);
+	}
 }

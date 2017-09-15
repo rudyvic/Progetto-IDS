@@ -22,12 +22,10 @@ public class ControllerCatalogEntry implements Observer{
 		view.addObserver(this);
 		
 		if(controller.cartContains(disc)) {
-			System.out.println("contains");
 			view.inTheCart();
-		} /*else if(model.getQuantity(disc) <= 0) {
+		}else if(controller.getQuantity(disc) <= 0) {
 			view.terminatedProduct(true);
 		}
-		*/
 	}
 	
 	public JPanel getPanel(){

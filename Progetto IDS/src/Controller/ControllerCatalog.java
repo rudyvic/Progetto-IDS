@@ -32,6 +32,10 @@ public class ControllerCatalog implements Observer{
 		return view.getPanel();
 	}
 	
+	public int getQuantity(Disc d){
+		return model.getQuantityDisc(d);
+	}
+	
 	public void showCatalogWith(String title, String genre, Double minPrice, Double maxPrice){
 		if(genre == "-") {
 			genre = null;

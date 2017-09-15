@@ -21,6 +21,11 @@ public class ModelCatalog extends Observable{
 		return database.getMaxPrice();
 	}
 	
+	public int getQuantityDisc(Disc d){
+		Catalog cat = synchCatalog();
+		return cat.getQuantity(d);
+	}
+	
 	public Catalog getCatalogRunningOut() {
 		synchCatalog();
 		
