@@ -97,7 +97,7 @@ public class ControllerTopbar implements Observer {
 				//controller.showSignin();
 			} else if("admin".equals((String)arg)){
 				updateView();
-				//controller.showAdminHome();
+				controller.showAdminHome();
 			}
 		}
 	}
