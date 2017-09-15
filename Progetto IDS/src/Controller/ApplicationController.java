@@ -88,7 +88,7 @@ public class ApplicationController {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new BorderLayout(0, 0));
 
-		ControllerCart controllerCart = new ControllerCart();
+		ControllerCart controllerCart = ControllerCart.getInstance();
 		mainPanel = controllerCart.getPanel();
 		frame.getContentPane().add(mainPanel, BorderLayout.CENTER);
 		
@@ -105,7 +105,7 @@ public class ApplicationController {
 	}
 
 	public void showCart() {
-		ControllerCart controllerCart = new ControllerCart();
+		ControllerCart controllerCart = ControllerCart.getInstance();
 		frame.getContentPane().remove(mainPanel);
 		mainPanel = controllerCart.getPanel();
 		frame.getContentPane().add(mainPanel, BorderLayout.CENTER);
@@ -208,13 +208,13 @@ public class ApplicationController {
 	}
 
 	public void discInTheCart(Disc d) {
-		ControllerCart controllerCart = new ControllerCart();
+		ControllerCart controllerCart = ControllerCart.getInstance();
 		controllerCart.add(d);
 		controllerTopbar.addDiscToCart();
 	}
 	
 	public boolean cartContains(Disc d){
-		ControllerCart c = new ControllerCart();
-		return c.contains(d);
+		ControllerCart controllerCart = ControllerCart.getInstance();
+		return controllerCart.contains(d);
 	}
 }

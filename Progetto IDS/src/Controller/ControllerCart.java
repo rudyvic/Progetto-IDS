@@ -13,11 +13,20 @@ public class ControllerCart implements Observer {
 	private ModelCart model;
 	private ViewCart view;
 	private ApplicationController controller = ApplicationController.getInstance();
+	private static ControllerCart controllerCart = null;
 	
-	public ControllerCart(){
+	private ControllerCart(){
 		this.model = new ModelCart();
 		this.view = new ViewCart(model);
 		view.addObserver(this);
+	}
+	
+	public static ControllerCart getInstance(){
+		if(controllerCart == null){
+			controllerCart = new ControllerCart();
+		}
+		
+		return controllerCart;
 	}
 	
 	public JPanel getPanel() {
