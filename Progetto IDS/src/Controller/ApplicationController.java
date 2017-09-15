@@ -173,12 +173,11 @@ public class ApplicationController {
 	}
 	
 	public void showAdminEditDiscQuantity(int discCode) {
-		/*
 		ControllerAdminEditDiscQuantity controllerAdminEditDiscQuantity = new ControllerAdminEditDiscQuantity(discCode);
 		frame.getContentPane().remove(mainPanel);
 		mainPanel = controllerAdminEditDiscQuantity.getPanel();
 		frame.getContentPane().add(mainPanel, BorderLayout.CENTER);
-		frame.revalidate();*/
+		frame.revalidate();
 	}
 	
 	public void showPayment(Double price) {
