@@ -37,7 +37,7 @@ public class ControllerLogin implements Observer {
 					}
 					controller.showHome();
 				} else {
-					JOptionPane.showMessageDialog(null, "Username or password wrong", "ERRORE", JOptionPane.ERROR_MESSAGE, null);
+					JOptionPane.showMessageDialog(null, "Username or password wrong", "ERROR", JOptionPane.ERROR_MESSAGE, null);
 				}
 			}
 		}
