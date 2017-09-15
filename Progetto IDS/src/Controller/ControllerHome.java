@@ -24,8 +24,7 @@ public class ControllerHome implements Observer {
 		/*
 		if(controller.isLogin()) {
 			view.showSuggested();
-		}
-		*/
+		}*/
 	}
 	
 	public JPanel getPanel() {
@@ -35,7 +34,9 @@ public class ControllerHome implements Observer {
 	@Override
 	public void update(Observable o, Object arg) {
 		if(arg instanceof String) {
-			if("catalogWith".equals(arg)) {
+			if("catalog".equals(arg)) {
+  				controller.showCatalog(null,null,Double.valueOf("0.00"),db.getMaxPrice());
+			} else if("catalogWith".equals(arg)) {
   				controller.showCatalog(view.getFindText(),null,Double.valueOf("0.00"),db.getMaxPrice());
 			}
 		}
