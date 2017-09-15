@@ -18,9 +18,13 @@ public class ControllerCatalog implements Observer{
 	private ViewCatalog view;
 	private ApplicationController controller = ApplicationController.getInstance();
 	
-	public ControllerCatalog(){
+	public ControllerCatalog() {
+		this(null,null,null,null);
+	}
+	
+	public ControllerCatalog(String title, String genre, Double minPrice, Double maxPrice){
 		this.model = new ModelCatalog();
-		this.view = new ViewCatalog(model,null,null,null,null);
+		this.view = new ViewCatalog(model,title,genre,String.valueOf(minPrice),String.valueOf(maxPrice));
 		view.addObserver(this);
 	}
 	
@@ -28,7 +32,10 @@ public class ControllerCatalog implements Observer{
 		return view.getPanel();
 	}
 	
-	public void showCatalogWith(String title, String genre, Double minPrice, Double maxPrice){	
+	public void showCatalogWith(String title, String genre, Double minPrice, Double maxPrice){
+		if(genre == "-") {
+			genre = null;
+		}
 		List<JPanel> list = new ArrayList<JPanel>();
 		for(Disc disc : model.searchCatalog(title, genre, minPrice, maxPrice)) {
 			ControllerCatalogEntry e = new ControllerCatalogEntry(disc);

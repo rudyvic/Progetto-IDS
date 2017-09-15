@@ -200,7 +200,7 @@ public class ApplicationController {
 	}
 
 	public void showCatalog(String title, String genre, Double minPrice, Double maxPrice) {
-		ControllerCatalog controllerCatalog = new ControllerCatalog();
+		ControllerCatalog controllerCatalog = new ControllerCatalog(title,genre,minPrice,maxPrice);
 		frame.getContentPane().remove(mainPanel);
 		controllerCatalog.showCatalogWith(title, genre, minPrice, maxPrice);
 		mainPanel = controllerCatalog.getPanel();
