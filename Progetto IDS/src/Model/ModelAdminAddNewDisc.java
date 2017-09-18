@@ -41,8 +41,8 @@ public class ModelAdminAddNewDisc extends Observable {
 		}
 	}
 	
-	public String saveImage(String image) {
-		String path = "../provaSwing/images/" + Math.round(Math.random()*100000) + disc.getTitle() + ".png";
+	public String saveImage(String image, String title) {
+		String path = "images/" + Math.round(Math.random()*100000) + title + ".png";
 		try {
 			URI uri = new URI("file:" + image);
 			URL url = uri.toURL();

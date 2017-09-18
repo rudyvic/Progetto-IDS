@@ -53,7 +53,7 @@ public class ControllerAdminAddNewDisc implements Observer {
 		Disc disc = new Disc();
 		disc.setTitle(view.getTitle());
 		disc.setSongs(view.getSongs());
-		disc.setImage(model.saveImage(view.getImage()));
+		disc.setImage(view.getImage());
 		disc.setPrice(view.getPrice());
 		disc.setMusician(view.getMusician());
 		disc.setBand(view.getBand());

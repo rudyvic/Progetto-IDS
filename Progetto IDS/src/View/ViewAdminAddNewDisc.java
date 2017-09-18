@@ -191,7 +191,7 @@ public class ViewAdminAddNewDisc extends Observable implements Observer, ActionL
 	}
 	
 	public String getImage() {
-		return model.saveImage(lblImage.getText());
+		return model.saveImage(lblImage.getText(),getTitle());
 	}
 	
 	public void setImage(String image) {
@@ -219,26 +219,26 @@ public class ViewAdminAddNewDisc extends Observable implements Observer, ActionL
 	}
 	
 	public String getMusician() {
-		if(isBand()) {
+		if(isMusician()) {
 			musician = txtOwner.getText();
 		}
 		return musician;
 	}
 	
 	public String getBand() {
-		if(isMusician()) {
+		if(isBand()) {
 			band = txtOwner.getText();
 		}
 		return band;
 	}
 	
 	public void bandDialog() {
-		chooseDialog = new BandDialog(this.getBand());
+		chooseDialog = new BandDialog(this.getOwner());
 		chooseDialog.setVisible(true);
 	}
 	
 	public void musicianDialog() {
-		chooseDialog = new MusicianDialog(this.getMusician());
+		chooseDialog = new MusicianDialog(this.getOwner());
 		chooseDialog.setVisible(true);
 	}
 	

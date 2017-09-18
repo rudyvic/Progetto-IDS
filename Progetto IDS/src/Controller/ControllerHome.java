@@ -4,6 +4,12 @@ import Model.DatabaseQuery;
 import Model.ModelHome;
 import View.ViewHome;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.URI;
+import java.net.URL;
 import java.util.*;
 
 import javax.swing.JPanel;
@@ -25,6 +31,7 @@ public class ControllerHome implements Observer {
 		if(controller.isLogin()) {
 			view.showSuggested();
 		}*/
+		
 	}
 	
 	public JPanel getPanel() {
