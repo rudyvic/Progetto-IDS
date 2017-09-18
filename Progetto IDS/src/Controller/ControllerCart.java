@@ -13,7 +13,7 @@ public class ControllerCart implements Observer {
 	private ModelCart model;
 	private ViewCart view;
 	private ApplicationController controller = ApplicationController.getInstance();
-	private static ControllerCart controllerCart = null;
+	private static ControllerCart controllerCart = null;	// Singleton
 	
 	private ControllerCart(){
 		this.model = new ModelCart();

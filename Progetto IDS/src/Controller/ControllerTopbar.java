@@ -98,6 +98,9 @@ public class ControllerTopbar implements Observer {
 			} else if("admin".equals((String)arg)){
 				updateView();
 				controller.showAdminHome();
+			} else if("cart".equals((String)arg)){
+				updateView();
+				controller.showCart();
 			}
 		}
 	}

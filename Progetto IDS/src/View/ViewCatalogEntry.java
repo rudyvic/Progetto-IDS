@@ -94,7 +94,7 @@ public class ViewCatalogEntry extends Observable implements Observer, ActionList
 		return panel;
 	}
 
-	public void terminatedProduct(boolean b) {
+	public void soldOutProduct(boolean b) {
 		if(b) {
 			btnAddToCart.setEnabled(false);
 			btnAddToCart.setText("Sold out");

@@ -24,7 +24,7 @@ public class ControllerCatalogEntry implements Observer{
 		if(controller.cartContains(disc)) {
 			view.inTheCart();
 		}else if(controller.getQuantity(disc) <= 0) {
-			view.terminatedProduct(true);
+			view.soldOutProduct(true);
 		}
 	}
 	
