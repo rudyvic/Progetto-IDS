@@ -24,8 +24,13 @@ public class ViewCartEntry extends Observable implements Observer, ActionListene
 	private JButton btnMinus;
 	private JPanel panel;
 	
-	public ViewCartEntry(ModelCartEntry model, Disc disc, int quantita) {
-		this.model = model;
+	private int quantity;
+	
+	public ViewCartEntry(ModelCartEntry model, Disc disc, int quantity) {
+
+		this.quantity = model.getQuantity();
+		
+		model.setQuantity(quantity,null);
 		model.addObserver(this);
 		
 		panel = new JPanel();
@@ -57,7 +62,7 @@ public class ViewCartEntry extends Observable implements Observer, ActionListene
 		btnMinus.setPreferredSize(new Dimension(29, 29));
 		panelQuantita.add(btnMinus);
 		
-		lblQuantita = new JLabel(Integer.toString(quantita));
+		lblQuantita = new JLabel(Integer.toString(quantity));
 		panelQuantita.add(lblQuantita);
 		
 		JButton btnPlus = new JButton("+");
@@ -78,15 +83,25 @@ public class ViewCartEntry extends Observable implements Observer, ActionListene
 		panel.add(panelQuantita);
 		panel.add(panelRimuovi);
 		
-		if(quantita==0) {
+		if(quantity==0) {
 			btnMinus.setEnabled(false);
 		}
 	}
-
+	
+	
 	@Override
 	public void update(Observable o, Object arg) {
-		
-		
+		if(arg instanceof String){
+			if("minus".equals((String)arg)){
+				lblQuantita.setText(Integer.toString(quantity));
+				if(quantity==0) {
+					btnMinus.setEnabled(false);
+				}
+			}
+			else if("plus".equals((String)arg)){
+				
+			}
+		}
 	}
 	
 	public JPanel getPanel(){

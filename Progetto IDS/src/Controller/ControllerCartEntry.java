@@ -26,7 +26,20 @@ public class ControllerCartEntry implements Observer{
 	
 	@Override
 	public void update(Observable o, Object arg) {
-		
+		if(arg instanceof String){
+			if("minus".equals(arg)){
+				int quantity = model.getQuantity();
+				model.setQuantity(quantity--,"minus");
+			}
+			
+			else if("plus".equals(arg)){
+				int quantity = model.getQuantity();
+				model.setQuantity(quantity++,"plus");
+			}
+			else if("remove".equals(arg)){
+				
+			}
+		}
 	}
 
 }
