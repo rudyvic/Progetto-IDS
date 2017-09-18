@@ -25,7 +25,7 @@ public class DatabaseQuery {
 		return db;
 	}
 		
-	private int addBand(String name, String gen, int year) {
+	public int addBand(String name, String gen, int year) {
 		try {
 			Class.forName("org.postgresql.Driver");
 		} catch (ClassNotFoundException e1) {
@@ -53,7 +53,7 @@ public class DatabaseQuery {
 	     return 0;
 	}
 
-	private int existsBand(String owner) {
+	public int existsBand(String owner) {
 		try {
 			Class.forName("org.postgresql.Driver");
 		} catch (ClassNotFoundException e1) {
@@ -81,7 +81,7 @@ public class DatabaseQuery {
 	    return 0;
 	}
 	
-	private int existsMusician(String owner) {
+	public int existsMusician(String owner) {
 		try {
 			Class.forName("org.postgresql.Driver");
 		} catch (ClassNotFoundException e1) {
@@ -334,13 +334,13 @@ public class DatabaseQuery {
 	                if (i > 0){
 		                ResultSet rs=pst.getGeneratedKeys();
 		                if(rs.next()){
-		                	addCatalog(rs.getInt(1),quantity, conn);
-		                	System.out.println("Disco aggiunto al catalogo!");
+			                	addCatalog(rs.getInt(1),quantity, conn);
+			                	System.out.println("Disco aggiunto al catalogo!");
 		                }
-	                	return 1;
+		                return 1;
 	                }
 	                else
-	                	return 0;
+	                		return 0;
 	                
 	            }catch(SQLException e){
 	        	    	System.out.println("Errore: " + e);
