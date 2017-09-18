@@ -161,12 +161,11 @@ public class ApplicationController {
 	}
 	
 	public void showAdminAddNewDisc() {
-		/*
 		ControllerAdminAddNewDisc controllerAdminAddNewDisc = new ControllerAdminAddNewDisc();
 		frame.getContentPane().remove(mainPanel);
 		mainPanel = controllerAdminAddNewDisc.getPanel();
 		frame.getContentPane().add(mainPanel, BorderLayout.CENTER);
-		frame.revalidate();*/
+		frame.revalidate();
 	}
 	
 	public void showAdminEditDiscQuantity() {
