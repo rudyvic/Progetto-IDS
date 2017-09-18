@@ -4,6 +4,8 @@ import Model.Disc;
 import Model.ModelCart;
 import View.ViewCart;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -28,6 +30,18 @@ public class ControllerCart implements Observer {
 		
 		controllerCart.setNewView();
 		return controllerCart;
+	}
+	
+	public void setList(){
+		ArrayList<Disc> listDisc = new ArrayList<Disc>();
+		List<JPanel> listPanel = new ArrayList<JPanel>();
+		listDisc = model.getCart();
+		for(Disc d:listDisc){
+			ControllerCartEntry controllerCartEntry = new ControllerCartEntry(d,model.getQuantity(d));
+			listPanel.add(controllerCartEntry.getPanel());
+		}
+		
+		view.setList(listPanel);
 	}
 	
 	private void setNewView() {

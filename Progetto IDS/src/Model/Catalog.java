@@ -20,7 +20,7 @@ public class Catalog {
 		catalog.put(disc,quantity);
 	}
 
-	public List<Disc> getCatalog() {
+	public ArrayList<Disc> getCatalog() {
 		return new ArrayList<Disc>(catalog.keySet());
 	}
 	

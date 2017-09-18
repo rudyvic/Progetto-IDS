@@ -4,13 +4,16 @@ import Model.Disc;
 import Model.ModelCart;
 
 import javax.swing.*;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
+import java.util.List;
 
 public class ViewCart extends Observable implements Observer, ActionListener {
 	private ModelCart model;
 	private JPanel panel;
+	private JScrollPane scrollPane;
 
 	public ViewCart(ModelCart model) {
 		this.model = model;
@@ -20,7 +23,7 @@ public class ViewCart extends Observable implements Observer, ActionListener {
 		
 		panel.setLayout(new BorderLayout(0, 0));
 		
-		JScrollPane scrollPane = new JScrollPane();
+		scrollPane = new JScrollPane();
 		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		panel.add(scrollPane, BorderLayout.CENTER);
 
@@ -47,26 +50,29 @@ public class ViewCart extends Observable implements Observer, ActionListener {
 		JLabel lblTotalPrice = new JLabel("TotalPrice");
 		southPanel.add(lblTotalPrice);
 		
+		if(model.isSuper(model.getUsername()))
+			lblTotalPrice.setText(Double.toString(model.getTotalPrice()*0.7) + "€");
 		
-		for(Disc disc : model.getCatalog()) {
-		    int quantita = model.getQuantity(disc);
-
-			//JPanel p = new PanelCellaTabellaCarrello(controller,disco,quantita);
-			//centerPanel_2.add(p);
-			
-			/*
-			if(controller.isSuper(controller.getUsername()))
-				prezzoTotale += (disco.getPrezzo()*quantita)*0.3;
-				*/
-		}
-		
-		lblTotalPrice.setText(Double.toString(model.getTotalPrice()) + "€");
+		else
+			lblTotalPrice.setText(Double.toString(model.getTotalPrice()) + "€");
 	}
 	
 	public JPanel getPanel() {
 		return panel;
 	}
-
+	
+	public void setList(List<JPanel> list) {
+		JPanel listPanel = new JPanel();
+		scrollPane.setViewportView(listPanel);
+		listPanel.setLayout(new GridLayout(0, 1, 0, 0));
+		
+		for(JPanel p : list) {
+			listPanel.add(p);
+		}
+		
+		panel.revalidate();
+	}
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if("btnEmptyCart".equals(e.getActionCommand())) {

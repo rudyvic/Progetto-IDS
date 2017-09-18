@@ -49,7 +49,7 @@ public class ModelCart extends Observable {
 		isLogin = false;
 	}
 	
-	public List<Disc> getCatalog() {
+	public ArrayList<Disc> getCart() {
 		synchCart();
 		return cart.getCatalog();
 	}
@@ -98,5 +98,13 @@ public class ModelCart extends Observable {
 		}
 		
 		return price;
+	}
+	
+	public boolean isSuper(String username){
+		return database.isSuper(username);
+	}
+	
+	public String getUsername(){
+		return username;
 	}
 }

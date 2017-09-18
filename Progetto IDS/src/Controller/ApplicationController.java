@@ -106,6 +106,7 @@ public class ApplicationController {
 
 	public void showCart() {
 		ControllerCart controllerCart = ControllerCart.getInstance();
+		controllerCart.setList();
 		frame.getContentPane().remove(mainPanel);
 		mainPanel = controllerCart.getPanel();
 		frame.getContentPane().add(mainPanel, BorderLayout.CENTER);
