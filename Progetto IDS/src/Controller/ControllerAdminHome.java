@@ -25,11 +25,15 @@ public class ControllerAdminHome implements Observer {
 	
 	@Override
 	public void update(Observable o, Object arg) {
-		if("add disc".equals((String)arg)){
-			controller.showAdminAddNewDisc();
-		} else if("edit discs quantity".equals((String)arg)){
-			controller.showAdminEditDiscQuantity();
-		} 
+		if(arg instanceof String) {
+			if("add disc".equals((String)arg)){
+				controller.showAdminAddNewDisc();
+			} else if("edit discs quantity".equals((String)arg)){
+				controller.showAdminEditDiscQuantity();
+			}
+		} else if(arg instanceof Integer) {
+			controller.showAdminEditDiscQuantity((int)arg);
+		}
 	}
 
 }

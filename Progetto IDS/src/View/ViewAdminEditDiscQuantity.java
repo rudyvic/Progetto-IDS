@@ -79,7 +79,7 @@ public class ViewAdminEditDiscQuantity extends Observable implements Observer, A
 		flowLayout_1.setAlignment(FlowLayout.LEFT);
 		tablePanel.add(oldQuantityPanel);
 		
-		lblOldQuantity = new JLabel("Acqual quantity: " + model.getCatalog().getQuantity(disc));
+		lblOldQuantity = new JLabel("Actual quantity: " + model.getCatalog().getQuantity(disc));
 		oldQuantityPanel.add(lblOldQuantity);
 		
 		JPanel newQuantityPanel = new JPanel();
@@ -113,14 +113,19 @@ public class ViewAdminEditDiscQuantity extends Observable implements Observer, A
 		return panel;
 	}
 	
-	public String getSelectedDisc() {
-		return (String)cbxCodes.getSelectedItem();
+	public int getSelectedDisc() {
+		return (Integer)cbxCodes.getSelectedItem();
 	}
 	
-	private void updateQuantity() {
+	public int getNewQuantity() {
+		return Integer.valueOf(txtNewQuantity.getText());
+	}
+	
+	public void updateQuantity() {
 		Disc disc = model.getCatalog().getDisc((Integer)cbxCodes.getSelectedItem());
-		lblOldQuantity.setText("Old quantity: " + model.getCatalog().getQuantity(disc));
+		lblOldQuantity.setText("Actual quantity: " + model.getCatalog().getQuantity(disc));
 		lblTitle.setText(disc.getTitle());
+		txtNewQuantity.setText("");
 		panel.revalidate();
 	}
 	

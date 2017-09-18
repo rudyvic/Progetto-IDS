@@ -78,8 +78,12 @@ public class ViewAdminHome extends Observable implements Observer, ActionListene
 		runningOutDiscsPanel.removeAll();
 		listCatalogPanel = new JPanel();
 		runningOutDiscsPanel.add(listCatalogPanel, BorderLayout.CENTER);
-		listCatalogPanel.setPreferredSize(new Dimension(500, 200));
-		listCatalogPanel.setLayout(new GridLayout(1, 0, 0, 0));
+		
+		JLabel label = new JLabel("Catalog running out");
+		runningOutDiscsPanel.add(label, BorderLayout.NORTH);
+		
+		listCatalogPanel.setPreferredSize(new Dimension(200, 200));
+		listCatalogPanel.setLayout(new GridLayout(0, 1, 0, 0));
 		
 		Catalog cat = model.getCatalogRunningOut();
 		for(Disc disc : cat.getCatalog()) {
@@ -95,7 +99,7 @@ public class ViewAdminHome extends Observable implements Observer, ActionListene
 			
 			if(cat.getQuantity(disc)==0) {
 				button.setForeground(Color.RED);
-			} else if(cat.getQuantity(disc)==0) {
+			} else if(cat.getQuantity(disc)==1) {
 				button.setForeground(Color.ORANGE);
 			} else {
 				button.setForeground(Color.YELLOW);

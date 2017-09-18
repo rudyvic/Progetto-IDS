@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.DatabaseQuery;
 import Model.ModelAdminEditDiscQuantity;
 import View.ViewAdminEditDiscQuantity;
 
@@ -28,10 +29,14 @@ public class ControllerAdminEditDiscQuantity implements Observer {
 	
 	@Override
 	public void update(Observable o, Object arg) {
-		if("add disc".equals((String)arg)){
-			controller.showAdminAddNewDisc();
-		} else if("edit discs quantity".equals((String)arg)){
-			controller.showAdminEditDiscQuantity();
+		if("cancel".equals((String)arg)){
+			controller.showAdminHome();
+		} else if("apply".equals((String)arg)){
+			DatabaseQuery db = DatabaseQuery.getInstance();
+			db.editStoreQuantity(view.getSelectedDisc(), view.getNewQuantity());
+			view.updateQuantity();
+		} else if("disc change".equals((String)arg)){
+			view.updateQuantity();
 		} 
 	}
 
