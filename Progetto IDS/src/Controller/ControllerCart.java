@@ -26,7 +26,13 @@ public class ControllerCart implements Observer {
 			controllerCart = new ControllerCart();
 		}
 		
+		controllerCart.setNewView();
 		return controllerCart;
+	}
+	
+	private void setNewView() {
+		view = new ViewCart(model);
+		view.addObserver(this);
 	}
 	
 	public JPanel getPanel() {
