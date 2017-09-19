@@ -31,7 +31,7 @@ public class ControllerHome implements Observer {
 		if(controller.isLogin()) {
 			view.showSuggested();
 		}*/
-		
+		view.showSuggested();
 	}
 	
 	public JPanel getPanel() {

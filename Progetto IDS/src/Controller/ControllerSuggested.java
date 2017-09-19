@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.DatabaseQuery;
 import Model.ModelSuggested;
 import View.ViewSuggested;
 
@@ -13,7 +14,7 @@ public class ControllerSuggested implements Observer {
 	private ApplicationController controller = ApplicationController.getInstance();
 
 	public ControllerSuggested() {
-		this.model = new ModelSuggested();
+		this.model = new ModelSuggested("aa");
 		this.view = new ViewSuggested(model);
 		view.addObserver(this);
 	}
@@ -25,7 +26,9 @@ public class ControllerSuggested implements Observer {
 	@Override
 	public void update(Observable o, Object arg) {
 		if(arg instanceof Integer) {
-			System.out.println("suggested: disco " + arg);
+			DatabaseQuery db = DatabaseQuery.getInstance();
+			controller.showCatalog(model.getSuggested().getDisc((int)arg).getTitle(), null, Double.valueOf("0.00"), db.getMaxPrice());
+			System.out.println("suggested: disc " + arg);
 		}
 	}
 

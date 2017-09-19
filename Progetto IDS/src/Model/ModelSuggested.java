@@ -4,14 +4,16 @@ import java.util.Observable;
 
 public class ModelSuggested extends Observable {
 	private Catalog suggested;
+	private String user;
 	
-	public ModelSuggested() {
-		suggested = new Catalog();
+	public ModelSuggested(String user) {
+		this.user = user;
 		loadSuggested();
 	}
 	
 	private void loadSuggested() {
-		suggested.add(new Disc(), 10);
+		DatabaseQuery db = DatabaseQuery.getInstance();
+		suggested = db.getSuggested(user);
 	}
 	
 	public Catalog getSuggested() {

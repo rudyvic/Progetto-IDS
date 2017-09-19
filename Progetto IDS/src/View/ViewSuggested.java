@@ -52,10 +52,9 @@ public class ViewSuggested extends Observable implements Observer, ActionListene
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getActionCommand().contains("btn")) {
-			String codiceDisco = e.getActionCommand().substring(3, e.getActionCommand().length());
-			//controller.showCatalogoWith(suggeriti.getDisco(Integer.valueOf(codiceDisco)).getTitolo(), null, null, null);
+			String discCode = e.getActionCommand().substring(3, e.getActionCommand().length());
 			this.setChanged();
-			this.notifyObservers(codiceDisco);
+			this.notifyObservers(Integer.valueOf(discCode));
 		}
 	}
 

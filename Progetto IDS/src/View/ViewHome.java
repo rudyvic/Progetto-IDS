@@ -12,6 +12,8 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import Controller.ControllerSuggested;
+
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -71,7 +73,7 @@ public class ViewHome extends Observable implements Observer, ActionListener {
 		JPanel panelCatalog = new JPanel();
 		panelCenter.add(panelCatalog);
 		
-		JButton btnCatalog = new JButton("Mostra tutto il catalogo >>");
+		JButton btnCatalog = new JButton("Show entire catalog >>");
 		btnCatalog.addActionListener(this);
 		btnCatalog.setActionCommand("btnCatalog");
 		btnCatalog.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
@@ -85,8 +87,9 @@ public class ViewHome extends Observable implements Observer, ActionListener {
 	}
 	
 	public void showSuggested() {
-		//JPanel panelSouth = new PanelSuggeriti(controller);
-		//panel.add(panelSouth, BorderLayout.SOUTH);
+		ControllerSuggested cs = new ControllerSuggested();
+		JPanel panelSouth = cs.getPanel();
+		panel.add(panelSouth, BorderLayout.SOUTH);
 	}
 	
 	public String getFindText() {
