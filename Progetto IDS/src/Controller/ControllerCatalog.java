@@ -7,6 +7,7 @@ import java.util.Observer;
 
 import javax.swing.JPanel;
 
+import Model.Catalog;
 import Model.Disc;
 import Model.ModelCatalog;
 import Model.ModelHome;

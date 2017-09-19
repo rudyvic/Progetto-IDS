@@ -17,11 +17,12 @@ import Model.ModelCartEntry;
 
 public class ViewCartEntry extends Observable implements Observer, ActionListener{
 	
-	private ModelCartEntry model = new ModelCartEntry();
+	private ModelCartEntry model;
 	
 	private JLabel lblQuantita;
 	private JLabel lblTitolo;
 	private JButton btnMinus;
+	private JButton btnPlus;
 	private JPanel panel;
 	
 	public ViewCartEntry(ModelCartEntry model, Disc disc, int quantity) {
@@ -62,7 +63,7 @@ public class ViewCartEntry extends Observable implements Observer, ActionListene
 		lblQuantita = new JLabel(Integer.toString(quantity));
 		panelQuantita.add(lblQuantita);
 		
-		JButton btnPlus = new JButton("+");
+		btnPlus = new JButton("+");
 		btnPlus.addActionListener(this);
 		btnPlus.setActionCommand("btnPlus");
 		btnPlus.setPreferredSize(new Dimension(29, 29));
@@ -80,26 +81,33 @@ public class ViewCartEntry extends Observable implements Observer, ActionListene
 		panel.add(panelQuantita);
 		panel.add(panelRimuovi);
 		
-		if(quantity==0) {
-			btnMinus.setEnabled(false);
-		}
+		updateButtons();
 	}
 	
+	private void updateButtons() {
+		if(model.getQuantity()==0) {
+			btnMinus.setEnabled(false);
+		} else {
+			btnMinus.setEnabled(true);
+		}
+		
+		if(model.getMaxQuantity()>model.getQuantity()) {
+			btnPlus.setEnabled(true);
+		} else {
+			btnPlus.setEnabled(false);
+		}
+	}
 	
 	@Override
 	public void update(Observable o, Object arg) {
 		if(arg instanceof String){
 			if("minus".equals((String)arg)){
 				lblQuantita.setText(Integer.toString(model.getQuantity()));
-				if(model.getQuantity()==0) {
-					btnMinus.setEnabled(false);
-				}
+				updateButtons();
 			}
 			else if("plus".equals((String)arg)){
 				lblQuantita.setText(Integer.toString(model.getQuantity()));
-				if(model.getQuantity()==1) {
-					btnMinus.setEnabled(true);
-				}
+				updateButtons();
 			}
 		}
 	}

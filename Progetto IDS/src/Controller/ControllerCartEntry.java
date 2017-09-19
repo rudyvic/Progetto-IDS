@@ -14,13 +14,13 @@ public class ControllerCartEntry implements Observer{
 	private ModelCartEntry model;
 	private ViewCartEntry view;
 	
-	private Disc d;
-	
 	public ControllerCartEntry(Disc d, int quantita){
-		this.d = d;
-		this.model = new ModelCartEntry();
+		this.model = new ModelCartEntry(d);
 		this.view = new ViewCartEntry(model, d, quantita);
 		view.addObserver(this);
+		
+		ControllerCatalog controllerCatalog = new ControllerCatalog();
+		model.setMaxQuantity(controllerCatalog.getQuantity(model.getDisc()));
 	}
 	
 	public JPanel getPanel(){
@@ -31,22 +31,22 @@ public class ControllerCartEntry implements Observer{
 	public void update(Observable o, Object arg) {
 		if(arg instanceof String){
 			if("minus".equals(arg)){
-				int quantity = model.getQuantity();
-				model.setQuantity(--quantity,"minus");
+				if(model.getQuantity()>0) {
+					model.setQuantity(model.getQuantity()-1,"minus");
+				}
 			}
 			
 			else if("plus".equals(arg)){
 				ControllerCatalog controllerCatalog = new ControllerCatalog();
-				int quantity = model.getQuantity();
-				if(controllerCatalog.checkDiscQuantity(d, quantity+1)==true) {
-					model.setQuantity(++quantity,"plus");
+				if(controllerCatalog.checkDiscQuantity(model.getDisc(), model.getQuantity()+1)) {
+					model.setQuantity(model.getQuantity()+1,"plus");
 				}
 			}
 			
 			else if("remove".equals(arg)){
 				ControllerCart controllerCart = ControllerCart.getInstance();
 				ApplicationController controller = ApplicationController.getInstance();
-				controllerCart.remove(d);
+				controllerCart.remove(model.getDisc());
 				controller.controllerTopbar.removeFromCart();
 			}
 		}
