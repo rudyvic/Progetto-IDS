@@ -28,7 +28,6 @@ public class ControllerSuggested implements Observer {
 		if(arg instanceof Integer) {
 			DatabaseQuery db = DatabaseQuery.getInstance();
 			controller.showCatalog(model.getSuggested().getDisc((int)arg).getTitle(), null, Double.valueOf("0.00"), db.getMaxPrice());
-			System.out.println("suggested: disc " + arg);
 		}
 	}
 
