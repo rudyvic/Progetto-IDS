@@ -61,6 +61,10 @@ public class ControllerCart implements Observer {
 		model.add(d, 1);
 	}
 	
+	public void remove(Disc d){
+		model.remove(d);
+	}
+	
 	@Override
 	public void update(Observable o, Object arg) {
 		if(arg instanceof String) {

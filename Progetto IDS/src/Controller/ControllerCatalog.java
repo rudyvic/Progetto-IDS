@@ -49,6 +49,10 @@ public class ControllerCatalog implements Observer{
 		view.setList(list);
 	}
 	
+	public boolean checkDiscQuantity(Disc disc, int quantity){
+		return model.checkDiscQuantity(disc, quantity);
+	}
+	
 	@Override
 	public void update(Observable o, Object arg) {
 		if(arg instanceof String) {

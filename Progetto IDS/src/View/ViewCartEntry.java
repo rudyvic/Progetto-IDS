@@ -17,7 +17,7 @@ import Model.ModelCartEntry;
 
 public class ViewCartEntry extends Observable implements Observer, ActionListener{
 	
-	private ModelCartEntry model;
+	private ModelCartEntry model = new ModelCartEntry();
 	
 	private JLabel lblQuantita;
 	private JLabel lblTitolo;
@@ -26,6 +26,7 @@ public class ViewCartEntry extends Observable implements Observer, ActionListene
 	
 	public ViewCartEntry(ModelCartEntry model, Disc disc, int quantity) {
 		
+		this.model = model;
 		model.setQuantity(quantity,null);
 		model.addObserver(this);
 		
@@ -95,7 +96,10 @@ public class ViewCartEntry extends Observable implements Observer, ActionListene
 				}
 			}
 			else if("plus".equals((String)arg)){
-				
+				lblQuantita.setText(Integer.toString(model.getQuantity()));
+				if(model.getQuantity()==1) {
+					btnMinus.setEnabled(true);
+				}
 			}
 		}
 	}

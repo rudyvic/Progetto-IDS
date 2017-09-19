@@ -86,4 +86,9 @@ public class ModelCatalog extends Observable{
 		database.editStoreQuantity(disc.getCode(),quantity);
 		synchCatalog();
 	}
+	
+	public boolean checkDiscQuantity(Disc disc, int quantity){
+		synchCatalog();
+		return catalog.checkDiscQuantity(disc, quantity);
+	}
 }

@@ -6,6 +6,10 @@ public class ModelCartEntry extends Observable{
 
 	private int quantity;
 	
+	public ModelCartEntry(){
+		
+	}
+	
 	public void setQuantity(int quantity,String action) {
 		this.quantity = quantity;
 		this.setChanged();
