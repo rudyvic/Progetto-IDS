@@ -144,12 +144,11 @@ public class ApplicationController {
 	}
 	
 	public void showSignin() {
-		/*
 		ControllerSignin controllerSignin = new ControllerSignin();
 		frame.getContentPane().remove(mainPanel);
 		mainPanel = controllerSignin.getPanel();
 		frame.getContentPane().add(mainPanel, BorderLayout.CENTER);
-		frame.revalidate();*/
+		frame.revalidate();
 	}
 	
 	public void showAdminHome() {

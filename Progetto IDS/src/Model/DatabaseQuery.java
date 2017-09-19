@@ -237,7 +237,7 @@ public class DatabaseQuery {
 		}
 	     try (Connection conn = DriverManager.getConnection(database, dbUsername, dbPassword)) {   
 	    	if(userAlreadyExists(p.getUsername()) == 0) {
-		    	try ( PreparedStatement pst = conn.prepareStatement("INSERT INTO persona (codiceFiscale, nomeUtente, password, nome, cognome, indirizzo, citta, numeroTelefono, numeroCellulare, isPersonale) VALUES (?,?,?,?,?,?,?,?,?,true)")){
+		    	try ( PreparedStatement pst = conn.prepareStatement("INSERT INTO persona (codiceFiscale, nomeUtente, password, nome, cognome, indirizzo, citta, numeroTelefono, numeroCellulare, isPersonale) VALUES (?,?,?,?,?,?,?,?,?,false)")){
 		            	pst.clearParameters();
 		                pst.setString(1, p.getIdCode());
 		                pst.setString(2, p.getUsername());
@@ -254,8 +254,8 @@ public class DatabaseQuery {
 		                else
 		                	return 0;	
 		            }catch(SQLException e){
-		        	    	System.out.println("Errore: " + e);
-		        	    	System.exit(1);
+			        	    	System.out.println("Errore: " + e);
+			        	    	System.exit(1);
 		            }
 	    	}
 	    	else

@@ -94,7 +94,7 @@ public class ControllerTopbar implements Observer {
 			} else if("signin".equals((String)arg)){
 				model.logout();
 				view.showLogSignPanel();
-				//controller.showSignin();
+				controller.showSignin();
 			} else if("admin".equals((String)arg)){
 				updateView();
 				controller.showAdminHome();
