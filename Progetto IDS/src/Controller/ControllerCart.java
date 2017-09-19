@@ -69,6 +69,18 @@ public class ControllerCart implements Observer {
 		return model.isEmpty();
 	}
 	
+	public void login(String user) {
+		model.login(user);
+	}
+	
+	public void logout() {
+		model.logout();
+	}
+	
+	public int cartLength() {
+		return model.length();
+	}
+	
 	@Override
 	public void update(Observable o, Object arg) {
 		if(arg instanceof String) {

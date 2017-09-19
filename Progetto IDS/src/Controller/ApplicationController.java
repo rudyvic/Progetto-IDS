@@ -189,11 +189,16 @@ public class ApplicationController {
 	}
 	
 	public void login(String username, boolean isAdmin, boolean isSuper) {
+		ControllerCart c = ControllerCart.getInstance();
+		c.login(username);
+		controllerTopbar.setDiscsInCart(c.cartLength());
 		controllerTopbar.login(username,isAdmin,isSuper);
 	}
 	
 	public void logout() {
 		controllerTopbar.logout();
+		ControllerCart c = ControllerCart.getInstance();
+		c.logout();
 	}
 
 	public void showCatalog(String title, String genre, Double minPrice, Double maxPrice) {

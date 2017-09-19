@@ -29,6 +29,7 @@ public class ModelTopbar extends Observable {
 		isLogin = false;
 		isAdmin = false;
 		isSuper = false;
+		emptyCart();
 		
 		setChanged();
 		notifyObservers();
@@ -64,5 +65,9 @@ public class ModelTopbar extends Observable {
 	
 	public void removeDiscToCart() {
 		discsInCart--;
+	}
+	
+	public void emptyCart() {
+		discsInCart = 0;
 	}
 }

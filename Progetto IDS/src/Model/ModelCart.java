@@ -111,4 +111,8 @@ public class ModelCart extends Observable {
 	public boolean isEmpty(){
 		return (cart.length() == 0);
 	}
+	
+	public int length() {
+		return cart.length();
+	}
 }

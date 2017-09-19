@@ -24,6 +24,10 @@ public class ControllerTopbar implements Observer {
 	public JPanel getPanel() {
 		return view.getPanel();
 	}
+	
+	public void setDiscsInCart(int value) {
+		model.setDiscsInCart(value);
+	}
 
 	public void addDiscToCart() {
 		model.addDiscToCart();
@@ -87,6 +91,7 @@ public class ControllerTopbar implements Observer {
 			} else if("logout".equals((String)arg)){
 				model.logout();
 				view.showLogSignPanel();
+				controller.logout();
 				controller.showHome();
 			} else if("update".equals((String)arg)){
 				updateView();
