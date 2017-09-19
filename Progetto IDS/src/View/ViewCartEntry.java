@@ -24,11 +24,7 @@ public class ViewCartEntry extends Observable implements Observer, ActionListene
 	private JButton btnMinus;
 	private JPanel panel;
 	
-	private int quantity;
-	
 	public ViewCartEntry(ModelCartEntry model, Disc disc, int quantity) {
-
-		this.quantity = model.getQuantity();
 		
 		model.setQuantity(quantity,null);
 		model.addObserver(this);
@@ -93,8 +89,8 @@ public class ViewCartEntry extends Observable implements Observer, ActionListene
 	public void update(Observable o, Object arg) {
 		if(arg instanceof String){
 			if("minus".equals((String)arg)){
-				lblQuantita.setText(Integer.toString(quantity));
-				if(quantity==0) {
+				lblQuantita.setText(Integer.toString(model.getQuantity()));
+				if(model.getQuantity()==0) {
 					btnMinus.setEnabled(false);
 				}
 			}
