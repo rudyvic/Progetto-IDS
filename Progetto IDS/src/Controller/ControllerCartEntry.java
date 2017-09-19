@@ -45,9 +45,9 @@ public class ControllerCartEntry implements Observer{
 			
 			else if("remove".equals(arg)){
 				ControllerCart controllerCart = ControllerCart.getInstance();
-				controllerCart.remove(d);
 				ApplicationController controller = ApplicationController.getInstance();
-				controller.showCart();
+				controllerCart.remove(d);
+				controller.controllerTopbar.removeFromCart();
 			}
 		}
 	}

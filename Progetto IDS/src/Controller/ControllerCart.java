@@ -65,6 +65,10 @@ public class ControllerCart implements Observer {
 		model.remove(d);
 	}
 	
+	public boolean isEmptyCart(){
+		return model.isEmpty();
+	}
+	
 	@Override
 	public void update(Observable o, Object arg) {
 		if(arg instanceof String) {

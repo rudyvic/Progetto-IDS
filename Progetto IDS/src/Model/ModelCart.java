@@ -107,4 +107,8 @@ public class ModelCart extends Observable {
 	public String getUsername(){
 		return username;
 	}
+	
+	public boolean isEmpty(){
+		return (cart.length() == 0);
+	}
 }
