@@ -335,7 +335,6 @@ public class DatabaseQuery {
 		                ResultSet rs=pst.getGeneratedKeys();
 		                if(rs.next()){
 			                	addCatalog(rs.getInt(1),quantity, conn);
-			                	System.out.println("Disco aggiunto al catalogo!");
 		                }
 		                return 1;
 	                }
