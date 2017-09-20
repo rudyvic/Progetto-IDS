@@ -122,14 +122,22 @@ public class MusicianDialog extends JDialog implements ActionListener {
 		} else if("btnProceed".equals(e.getActionCommand())) {
 			DatabaseQuery db = DatabaseQuery.getInstance();
 			
+			if(db.existsGenre(txtGenre.getText().trim())==0) {
+				db.addGenre(txtGenre.getText().trim());
+			}
+			
 			if(db.existsBand(txtBand.getText())==1) {
-				Musician m = new Musician(musician, txtGenre.getText(), Integer.valueOf(txtYear.getText()), txtInstruments.getText(), txtBand.getText());
+				Musician m = new Musician(musician, txtGenre.getText().trim(), Integer.valueOf(txtYear.getText()), txtInstruments.getText().trim(), txtBand.getText().trim());
 				db.addMusician(m);
 				this.setVisible(false);
 				this.dispose();
 			} else {
-				BandDialog dialog = new BandDialog(txtBand.getText());
-				dialog.setVisible(true);
+				if(txtBand.getText().trim().equals("")) {
+					JOptionPane.showMessageDialog(null, "<html>You must insert the name of a band.", "ERROR", JOptionPane.ERROR_MESSAGE, null);
+				} else {
+					BandDialog dialog = new BandDialog(txtBand.getText().trim());
+					dialog.setVisible(true);
+				}
 			}
 		}
 	}

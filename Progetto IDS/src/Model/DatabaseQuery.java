@@ -25,6 +25,60 @@ public class DatabaseQuery {
 		return db;
 	}
 		
+	public int addGenre(String gen) {
+		try {
+			Class.forName("org.postgresql.Driver");
+		} catch (ClassNotFoundException e1) {
+			e1.printStackTrace();
+		}
+	     try ( Connection conn = DriverManager.getConnection(database, dbUsername, dbPassword)) {   
+		    	try ( PreparedStatement pst = conn.prepareStatement("INSERT INTO genere  (nome) VALUES (?)")){
+		            	pst.clearParameters();
+		                pst.setString(1, gen);
+		                int i = pst.executeUpdate(); 
+		                if (i > 0)
+		                	return 1;	           
+		                else
+		                	return 0;	
+		            }catch(SQLException e){
+		        	    	System.out.println("Errore: " + e);
+		        	    	System.exit(1);
+		            }
+	     } catch(SQLException e){
+	    	System.out.println("Errore: " + e);
+	    	System.exit(1);
+	     }
+	     return 0;
+	}
+	
+	public int existsGenre(String gen) {
+		try {
+			Class.forName("org.postgresql.Driver");
+		} catch (ClassNotFoundException e1) {
+			e1.printStackTrace();
+		}
+	     try ( Connection conn = DriverManager.getConnection(database, dbUsername, dbPassword)) {   
+	    	 try ( PreparedStatement pst = conn.prepareStatement("SELECT COUNT(*) FROM genere WHERE nome = ?;")){ 
+	    		 	pst.setString(1, gen);
+	                ResultSet rs = pst.executeQuery(); 
+	                if(rs.next()){
+	                	if(rs.getInt(1) > 0){
+	                		return 1;
+	                	}
+	                	else 
+	                		return 0;
+	                }
+	            }catch(SQLException e){
+	        	    	System.out.println("Errore: " + e);
+	        	    	System.exit(1);
+	            }
+	     }catch(SQLException e){
+   	    	System.out.println("Errore: " + e);
+   	    	System.exit(1);
+       }
+	    return 0;
+	}
+	
 	public int addBand(String name, String gen, int year) {
 		try {
 			Class.forName("org.postgresql.Driver");
@@ -230,6 +284,8 @@ public class DatabaseQuery {
 	}
 	
 	public int signin(Person p) {
+		if(p==null)
+			return 0;
 		try {
 			Class.forName("org.postgresql.Driver");
 		} catch (ClassNotFoundException e1) {
@@ -255,17 +311,15 @@ public class DatabaseQuery {
 		                	return 0;	
 		            }catch(SQLException e){
 			        	    	System.out.println("Errore: " + e);
-			        	    	System.exit(1);
+			        	    	return 0;
 		            }
 	    	}
 	    	else
 	    		return -1;	//Nome utente esiste già
 	     } catch(SQLException e){
 	    	System.out.println("Errore: " + e);
-	    	System.exit(1);
+	    	return 0;
 	     }
-	     
-	     return 0;
 	}
 	
 	private void addCatalog(int code, int quantity, Connection conn) {
@@ -314,6 +368,9 @@ public class DatabaseQuery {
 	}
 	
 	public int addDisc (Disc d, int quantity) {
+		if(this.existsGenre(d.getGenre())==0) {
+			this.addGenre(d.getGenre());
+		}
 		try {
 			Class.forName("org.postgresql.Driver");
 		} catch (ClassNotFoundException e1) {
@@ -560,8 +617,6 @@ public class DatabaseQuery {
 				+ "WHERE P.nomeUtente = '" + user + "' AND P.nomeUtente = A.cliente AND A.codice = V.codAcquisto "
 				+ "AND D.codice = V.disco "
 				+ "GROUP BY D.genere;";
-		
-		System.out.println(query);
 
 	     try ( Connection conn = DriverManager.getConnection(database, dbUsername, dbPassword)) {   
 	    	 try (Statement st = conn.createStatement()){

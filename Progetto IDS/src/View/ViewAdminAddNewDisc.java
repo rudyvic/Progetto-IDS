@@ -170,7 +170,7 @@ public class ViewAdminAddNewDisc extends Observable implements Observer, ActionL
 		rdbtnMusician.setSelected(false);
 		rdbtnBand.setSelected(true);	
 		
-		band = txtOwner.getText();
+		band = txtOwner.getText().trim();
 		musician = null;
 	}
 	
@@ -179,19 +179,23 @@ public class ViewAdminAddNewDisc extends Observable implements Observer, ActionL
 		rdbtnBand.setSelected(false);	
 		
 		band = null;
-		musician = txtOwner.getText();
+		musician = txtOwner.getText().trim();
 	}
 
 	public String getTitle() {
-		return txtTitle.getText();
+		return txtTitle.getText().trim();
 	}
 	
 	public String getSongs() {
-		return txtSongs.getText();
+		return txtSongs.getText().trim();
 	}
 	
 	public String getImage() {
-		return model.saveImage(lblImage.getText(),getTitle());
+		if(lblImage.getText().equals("no image selected")) {
+			return "";
+		} else {
+			return model.saveImage(lblImage.getText(),getTitle());
+		}
 	}
 	
 	public void setImage(String image) {
@@ -203,11 +207,11 @@ public class ViewAdminAddNewDisc extends Observable implements Observer, ActionL
 	}
 	
 	public String getDescription() {
-		return txtDescription.getText();
+		return txtDescription.getText().trim();
 	}
 	
 	public String getGenre() {
-		return txtGenre.getText();
+		return txtGenre.getText().trim();
 	}
 	
 	public int getQuantity() {
@@ -215,19 +219,19 @@ public class ViewAdminAddNewDisc extends Observable implements Observer, ActionL
 	}
 	
 	public String getOwner() {
-		return txtOwner.getText();
+		return txtOwner.getText().trim();
 	}
 	
 	public String getMusician() {
 		if(isMusician()) {
-			musician = txtOwner.getText();
+			musician = txtOwner.getText().trim();
 		}
 		return musician;
 	}
 	
 	public String getBand() {
 		if(isBand()) {
-			band = txtOwner.getText();
+			band = txtOwner.getText().trim();
 		}
 		return band;
 	}

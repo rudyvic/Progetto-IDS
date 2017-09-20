@@ -29,6 +29,11 @@ public class ControllerAdminAddNewDisc implements Observer {
 	}
 	
 	private boolean checkOwner() {
+		if((view.isBand() && view.getBand().trim().equals("")) || (view.isMusician() && view.getMusician().trim().equals(""))) {
+			JOptionPane.showMessageDialog(null, "<html>You must enter the name of a band or a musician.", "ERROR", JOptionPane.ERROR_MESSAGE, null);
+			return false;
+		}
+		
 		DatabaseQuery db = DatabaseQuery.getInstance();
 		if(view.isMusician()) {
 			if(db.existsMusician(view.getOwner()) == 1) {
@@ -59,6 +64,10 @@ public class ControllerAdminAddNewDisc implements Observer {
 		disc.setBand(view.getBand());
 		disc.setDescription(view.getDescription());
 		disc.setGenre(view.getGenre());
+		
+		if(disc.getTitle().equals("") || disc.getSongs().equals("") || disc.getImage().equals("") || disc.getGenre().equals("")) {
+			return false;
+		}
 		
 		model.setQuantity(view.getQuantity());
 		model.setDisc(disc);
@@ -97,8 +106,14 @@ public class ControllerAdminAddNewDisc implements Observer {
 				}
 			} else if("proceed".equals((String)arg)){
 				if(checkOwner()) {
-					if(insertDisc()) {
-						controller.showAdminHome();
+					try {
+						if(insertDisc()) {
+							controller.showAdminHome();
+						} else {
+							JOptionPane.showMessageDialog(null, "<html>Impossible to proceed.", "ERROR", JOptionPane.ERROR_MESSAGE, null);
+						}
+					} catch(Exception e) {
+						JOptionPane.showMessageDialog(null, "<html>Impossible to proceed.", "ERROR", JOptionPane.ERROR_MESSAGE, null);
 					}
 				}
 			}

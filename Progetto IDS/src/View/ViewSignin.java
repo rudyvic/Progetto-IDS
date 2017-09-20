@@ -53,7 +53,7 @@ public class ViewSignin extends Observable implements Observer, ActionListener {
 		JPanel passwordPanel = new JPanel();
 		centerPanel.add(passwordPanel);
 		
-		JLabel lblPassword = new JLabel("Password");
+		JLabel lblPassword = new JLabel("Password (at least 7 chars)");
 		passwordPanel.add(lblPassword);
 		
 		txtPassword = new JTextField();
@@ -124,7 +124,7 @@ public class ViewSignin extends Observable implements Observer, ActionListener {
 		JPanel cellphonePanel = new JPanel();
 		centerPanel.add(cellphonePanel);
 		
-		JLabel lblCellphone = new JLabel("Cellphone");
+		JLabel lblCellphone = new JLabel("Cellphone (optional)");
 		cellphonePanel.add(lblCellphone);
 		
 		txtCellphone = new JTextField();
@@ -151,7 +151,11 @@ public class ViewSignin extends Observable implements Observer, ActionListener {
 	}
 	
 	public Person getPerson() {
-		return new Person(txtIdCode.getText(), txtUsername.getText(), txtPassword.getText(), txtName.getText(), txtSurname.getText(), txtAddress.getText(), txtCity.getText(), txtPhone.getText(), txtCellphone.getText());
+		if(txtIdCode.getText().trim().equals("") || txtUsername.getText().trim().equals("") || txtPassword.getText().trim().equals("") || txtName.getText().trim().equals("") || txtSurname.getText().trim().equals("") || txtAddress.getText().trim().equals("") || txtCity.getText().trim().equals("") || txtPhone.getText().trim().equals("")) {
+			return null;
+		} else {
+			return new Person(txtIdCode.getText().trim(), txtUsername.getText().trim(), txtPassword.getText().trim(), txtName.getText().trim(), txtSurname.getText().trim(), txtAddress.getText().trim(), txtCity.getText().trim(), txtPhone.getText().trim(), txtCellphone.getText().trim());
+		}
 	}
 
 	@Override

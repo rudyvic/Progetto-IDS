@@ -91,7 +91,10 @@ public class BandDialog extends JDialog implements ActionListener {
 			this.dispose();
 		} else if("btnProceed".equals(e.getActionCommand())) {
 			DatabaseQuery db = DatabaseQuery.getInstance();
-			db.addBand(band, txtGenre.getText(), Integer.valueOf(txtYear.getText()));
+			if(db.existsGenre(txtGenre.getText().trim())==0) {
+				db.addGenre(txtGenre.getText().trim());
+			}
+			db.addBand(band, txtGenre.getText().trim(), Integer.valueOf(txtYear.getText()));
 			this.setVisible(false);
 			this.dispose();
 		}
