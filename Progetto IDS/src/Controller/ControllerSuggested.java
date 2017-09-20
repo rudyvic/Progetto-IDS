@@ -13,8 +13,8 @@ public class ControllerSuggested implements Observer {
 	private ViewSuggested view;
 	private ApplicationController controller = ApplicationController.getInstance();
 
-	public ControllerSuggested() {
-		this.model = new ModelSuggested("aa");
+	public ControllerSuggested(String user) {
+		this.model = new ModelSuggested(user);
 		this.view = new ViewSuggested(model);
 		view.addObserver(this);
 	}

@@ -112,25 +112,7 @@ public class ApplicationController {
 		frame.getContentPane().add(mainPanel, BorderLayout.CENTER);
 		frame.revalidate();
 	}
-/*
-	public void exitFromCarrello() {
-		System.out.println("Uscita dal carrelo");
-	}
-	
-	public void showCatalogo(CatalogoApplicationController catalogo) {
-		frame.getContentPane().remove(panel);
-		panel = new PanelCatalogo(catalogo,controller);
-		frame.getContentPane().add(panel, BorderLayout.CENTER);
-		frame.revalidate();
-	}
-	
-	public void showCatalogoWith(CatalogoApplicationController catalogo, String nomeProdotto, String genere, String prezzoMin, String prezzoMax) {
-		frame.getContentPane().remove(panel);
-		panel = new PanelCatalogo(catalogo,controller,nomeProdotto, genere, prezzoMin, prezzoMax);
-		frame.getContentPane().add(panel, BorderLayout.CENTER);
-		frame.revalidate();
-	}
-	*/
+
 	public void showLogin() {
 		ControllerLogin controllerLogin = new ControllerLogin();
 		frame.getContentPane().remove(mainPanel);
@@ -179,13 +161,12 @@ public class ApplicationController {
 		frame.revalidate();
 	}
 	
-	public void showPayment(Double price) {
-		/*
-		ControllerPayment controllerPayment = new ControllerPayment(price);
+	public void showPayment() {
+		ControllerPayment controllerPayment = new ControllerPayment();
 		frame.getContentPane().remove(mainPanel);
 		mainPanel = controllerPayment.getPanel();
 		frame.getContentPane().add(mainPanel, BorderLayout.CENTER);
-		frame.revalidate();*/
+		frame.revalidate();
 	}
 	
 	public void login(String username, boolean isAdmin, boolean isSuper) {

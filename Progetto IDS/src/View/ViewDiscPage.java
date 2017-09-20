@@ -45,7 +45,11 @@ public class ViewDiscPage extends Observable implements Observer, ActionListener
 		centerPanel.add(ltlSongs);
 		
 		JLabel lblImage = new JLabel();
-		//lblCopertina.setIcon(new ImageIcon(FramePaginaProdotto.class.getResource("/provaSwing/" + disco.getFotoCopertina())));
+		ImageIcon imageIcon = new ImageIcon(model.getDisc().getImage());
+		Image image = imageIcon.getImage(); // transform it 
+		image = image.getScaledInstance(230, 230,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+		imageIcon = new ImageIcon(image);
+		lblImage.setIcon(imageIcon);
 		lblImage.setBounds(16, 36, 230, 230);
 		centerPanel.add(lblImage);
 		

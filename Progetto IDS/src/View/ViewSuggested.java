@@ -5,11 +5,15 @@ import Model.ModelSuggested;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Observable;
@@ -27,21 +31,25 @@ public class ViewSuggested extends Observable implements Observer, ActionListene
 		
 		panel.setLayout(new BorderLayout(0, 0));
 		
-		JPanel panelGrid = new JPanel();
-		panelGrid.setPreferredSize(new Dimension(500, 200));
-		panel.add(panelGrid, BorderLayout.CENTER);
-		panelGrid.setLayout(new GridLayout(1, 5, 0, 0));
+		JPanel centerPanel = new JPanel();
+		centerPanel.setPreferredSize(new Dimension(500, 200));
+		panel.add(centerPanel, BorderLayout.CENTER);
+		centerPanel.setLayout(new GridLayout(1, 5, 0, 0));
 		
 		for(Disc disc : model.getSuggested().getCatalog()) {
 			JPanel p = new JPanel();
-			p.setLayout(new GridLayout(2,1,0,0));
-			panelGrid.add(p);
-			
-			JButton button = new JButton(disc.getTitle());
-			button.addActionListener(this);
-			button.setActionCommand("btn" + disc.getCode());
-			button.setBorder(null);
-			p.add(button);
+			p.setLayout(new FlowLayout());
+			centerPanel.add(p);
+
+			JButton btnImage = new JButton();
+			ImageIcon imageIcon = new ImageIcon(disc.getImage());
+			Image image = imageIcon.getImage(); // transform it 
+			image = image.getScaledInstance(150, 150,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+			imageIcon = new ImageIcon(image);
+			btnImage.setIcon(imageIcon);
+			btnImage.addActionListener(this);
+			btnImage.setActionCommand("btn" + disc.getCode());
+			p.add(btnImage);
 		}
 	}
 	

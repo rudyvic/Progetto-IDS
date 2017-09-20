@@ -27,11 +27,9 @@ public class ControllerHome implements Observer {
 		this.view = new ViewHome(model);
 		view.addObserver(this);
 		
-		/*
-		if(controller.isLogin()) {
-			view.showSuggested();
-		}*/
-		view.showSuggested();
+		if(controller.controllerTopbar.isLogin()) {
+			view.showSuggested(controller.controllerTopbar.getUsername());
+		}
 	}
 	
 	public JPanel getPanel() {

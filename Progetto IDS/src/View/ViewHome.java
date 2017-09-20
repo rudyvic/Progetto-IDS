@@ -86,8 +86,8 @@ public class ViewHome extends Observable implements Observer, ActionListener {
 		return panel;
 	}
 	
-	public void showSuggested() {
-		ControllerSuggested cs = new ControllerSuggested();
+	public void showSuggested(String user) {
+		ControllerSuggested cs = new ControllerSuggested(user);
 		JPanel panelSouth = cs.getPanel();
 		panel.add(panelSouth, BorderLayout.SOUTH);
 	}

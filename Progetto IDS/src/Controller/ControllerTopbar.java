@@ -76,6 +76,22 @@ public class ControllerTopbar implements Observer {
 		updateView();
 	}
 	
+	public boolean isLogin() {
+		return model.isLogin();
+	}
+	
+	public boolean isAdmin() {
+		return model.isAdmin();
+	}
+	
+	public boolean isSuper() {
+		return model.isSuper();
+	}
+	
+	public String getUsername() {
+		return model.getUsername();
+	}
+	
 	public void logout() {
 		model.logout();
 		updateView();
