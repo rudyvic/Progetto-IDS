@@ -5,6 +5,7 @@ import java.util.Observer;
 
 import javax.swing.JPanel;
 
+import Model.DatabaseQuery;
 import Model.Disc;
 import Model.ModelCartEntry;
 import View.ViewCartEntry;
@@ -13,6 +14,8 @@ public class ControllerCartEntry implements Observer{
 	
 	private ModelCartEntry model;
 	private ViewCartEntry view;
+	private DatabaseQuery db = DatabaseQuery.getInstance();
+	private ApplicationController controller = ApplicationController.getInstance();
 	
 	public ControllerCartEntry(Disc d, int quantita){
 		this.model = new ModelCartEntry(d);
@@ -33,6 +36,7 @@ public class ControllerCartEntry implements Observer{
 			if("minus".equals(arg)){
 				if(model.getQuantity()>0) {
 					model.setQuantity(model.getQuantity()-1,"minus");
+					db.editCartQuantity(controller.controllerTopbar.getUsername(), model.getDisc().getCode(), model.getQuantity());
 				}
 			}
 			
@@ -40,6 +44,7 @@ public class ControllerCartEntry implements Observer{
 				ControllerCatalog controllerCatalog = new ControllerCatalog();
 				if(controllerCatalog.checkDiscQuantity(model.getDisc(), model.getQuantity()+1)) {
 					model.setQuantity(model.getQuantity()+1,"plus");
+					db.editCartQuantity(controller.controllerTopbar.getUsername(), model.getDisc().getCode(), model.getQuantity());
 				}
 			}
 			

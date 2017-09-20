@@ -23,6 +23,7 @@ import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import javax.swing.border.MatteBorder;
 
+import Model.Catalog;
 import Model.Disc;
 
 import java.awt.Component;

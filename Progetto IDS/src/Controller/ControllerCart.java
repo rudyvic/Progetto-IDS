@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class ControllerCart implements Observer {
@@ -89,8 +90,12 @@ public class ControllerCart implements Observer {
 				controller.controllerTopbar.emptyCart();
 				controller.showHome();
 			} else if("payment".equals((String)arg)){
-				System.out.println("pagamento");
-				controller.showHome();
+				if(controller.controllerTopbar.isLogin()) {
+					controller.showPayment();
+				} else {
+					JOptionPane.showMessageDialog(null, "You must be logged in to proceed.", "LOGIN FIRST", JOptionPane.INFORMATION_MESSAGE, null);
+					controller.showLogin();
+				}
 			}
 		}
 	}
