@@ -16,6 +16,7 @@ public class ControllerCartEntry implements Observer{
 	private ViewCartEntry view;
 	private DatabaseQuery db = DatabaseQuery.getInstance();
 	private ApplicationController controller = ApplicationController.getInstance();
+	private ControllerCart controllerCart = ControllerCart.getInstance();
 	
 	public ControllerCartEntry(Disc d, int quantita){
 		this.model = new ModelCartEntry(d);
@@ -24,6 +25,10 @@ public class ControllerCartEntry implements Observer{
 		
 		ControllerCatalog controllerCatalog = new ControllerCatalog();
 		model.setMaxQuantity(controllerCatalog.getQuantity(model.getDisc()));
+		
+		if(controller.controllerTopbar.isSuper()) {
+			view.setSuper();
+		}
 	}
 	
 	public JPanel getPanel(){
@@ -36,7 +41,7 @@ public class ControllerCartEntry implements Observer{
 			if("minus".equals(arg)){
 				if(model.getQuantity()>0) {
 					model.setQuantity(model.getQuantity()-1,"minus");
-					db.editCartQuantity(controller.controllerTopbar.getUsername(), model.getDisc().getCode(), model.getQuantity());
+					controllerCart.editDiscQuantity(model.getDisc(), model.getQuantity());
 				}
 			}
 			
@@ -44,7 +49,7 @@ public class ControllerCartEntry implements Observer{
 				ControllerCatalog controllerCatalog = new ControllerCatalog();
 				if(controllerCatalog.checkDiscQuantity(model.getDisc(), model.getQuantity()+1)) {
 					model.setQuantity(model.getQuantity()+1,"plus");
-					db.editCartQuantity(controller.controllerTopbar.getUsername(), model.getDisc().getCode(), model.getQuantity());
+					controllerCart.editDiscQuantity(model.getDisc(), model.getQuantity());
 				}
 			}
 			

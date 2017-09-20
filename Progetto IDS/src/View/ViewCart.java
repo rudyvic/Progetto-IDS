@@ -13,7 +13,9 @@ import java.util.List;
 public class ViewCart extends Observable implements Observer, ActionListener {
 	private ModelCart model;
 	private JPanel panel;
+	
 	private JScrollPane scrollPane;
+	private JLabel lblTotalPrice;
 
 	public ViewCart(ModelCart model) {
 		this.model = model;
@@ -47,18 +49,22 @@ public class ViewCart extends Observable implements Observer, ActionListener {
 		btnProceedToPayment.setActionCommand("btnProceedToPayment");
 		southPanel.add(btnProceedToPayment);
 		
-		JLabel lblTotalPrice = new JLabel("TotalPrice");
+		lblTotalPrice = new JLabel("TotalPrice");
 		southPanel.add(lblTotalPrice);
 		
+		updatePrice();
+	}
+	
+	public JPanel getPanel() {
+		return panel;
+	}
+	
+	private void updatePrice() {
 		if(model.isSuper(model.getUsername()))
 			lblTotalPrice.setText(Double.toString(model.getTotalPrice()*0.7) + "€");
 		
 		else
 			lblTotalPrice.setText(Double.toString(model.getTotalPrice()) + "€");
-	}
-	
-	public JPanel getPanel() {
-		return panel;
 	}
 	
 	public void setList(List<JPanel> list) {
@@ -86,6 +92,7 @@ public class ViewCart extends Observable implements Observer, ActionListener {
 
 	@Override
 	public void update(Observable o, Object arg) {
+		updatePrice();
 		this.setChanged();
 		this.notifyObservers("update");
 	}

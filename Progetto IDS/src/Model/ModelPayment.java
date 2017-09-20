@@ -5,6 +5,7 @@ import java.util.Observable;
 public class ModelPayment extends Observable {
 	private Catalog cart;
 	private String username;
+	private DatabaseQuery db = DatabaseQuery.getInstance();
 	
 	public ModelPayment(String username, Catalog cart) {
 		this.username = username;
@@ -23,7 +24,11 @@ public class ModelPayment extends Observable {
 	public double getPrice() {
 		double price = 0;
 		for(Disc d : cart.getCatalog()) {
-			price = price + (cart.getQuantity(d) * d.getPrice());
+			if(db.isSuper(username)) {
+				price = price + (cart.getQuantity(d) * d.getPrice() * 0.7);
+			} else {
+				price = price + (cart.getQuantity(d) * d.getPrice());
+			}
 		}
 		return price;
 	}

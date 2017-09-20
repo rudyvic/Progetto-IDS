@@ -46,7 +46,6 @@ public class ViewHome extends Observable implements Observer, ActionListener {
 		
 		panel = new JPanel();
 		
-		panel.setBackground(Color.GREEN);
 		panel.setLayout(new BorderLayout(0, 0));
 		
 		Component verticalStrut_4 = Box.createVerticalStrut(20);

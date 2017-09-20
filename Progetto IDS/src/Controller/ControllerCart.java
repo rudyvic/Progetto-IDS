@@ -82,6 +82,10 @@ public class ControllerCart implements Observer {
 		return model.length();
 	}
 	
+	public void editDiscQuantity(Disc disc, int quantity) {
+		model.editDiscQuantity(disc, quantity);
+	}
+	
 	@Override
 	public void update(Observable o, Object arg) {
 		if(arg instanceof String) {
@@ -91,6 +95,9 @@ public class ControllerCart implements Observer {
 				controller.showHome();
 			} else if("payment".equals((String)arg)){
 				if(controller.controllerTopbar.isLogin()) {
+					if(controller.controllerTopbar.isSuper()) {
+						JOptionPane.showMessageDialog(null, "<html>Congrats, you are a super user! <br>You pay " + model.getTotalPrice()*0.7 + "€ instead of " + model.getTotalPrice() + "€.", "SUPER USER", JOptionPane.INFORMATION_MESSAGE, null);
+					}
 					controller.showPayment();
 				} else {
 					JOptionPane.showMessageDialog(null, "You must be logged in to proceed.", "LOGIN FIRST", JOptionPane.INFORMATION_MESSAGE, null);

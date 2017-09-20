@@ -84,17 +84,17 @@ public class ApplicationController {
 	public void initialize() {
 		frame = new JFrame();
 		frame.setTitle("ApplicationController");
-		frame.setBounds(100, 100, 800, 600);
+		frame.setBounds(100, 100, 900, 600);
 		frame.setMinimumSize(new Dimension(800,600));
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new BorderLayout(0, 0));
-
-		ControllerCart controllerCart = ControllerCart.getInstance();
-		mainPanel = controllerCart.getPanel();
-		frame.getContentPane().add(mainPanel, BorderLayout.CENTER);
 		
 		controllerTopbar = new ControllerTopbar();
 		frame.getContentPane().add(controllerTopbar.getPanel(), BorderLayout.NORTH);
+
+		ControllerHome controllerHome = new ControllerHome();
+		mainPanel = controllerHome.getPanel();
+		frame.getContentPane().add(mainPanel, BorderLayout.CENTER);
 	}
 	
 	public void showHome() {

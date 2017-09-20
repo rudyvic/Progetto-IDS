@@ -25,12 +25,10 @@ public class ViewTopbar extends Observable implements Observer, ActionListener {
 		
 		panel = new JPanel();
 
-		panel.setBackground(Color.RED);
 		panel.setLayout(new BorderLayout(0, 0));
 		panel.setPreferredSize(new Dimension(500, 100));
 		
 		// costruisco il panel personale
-		adminPanel.setBackground(Color.ORANGE);
 		adminPanel.setLayout(new GridLayout(2, 1, 0, 0));
 		
 		adminPanel.add(lblAdminUsername);
@@ -49,7 +47,6 @@ public class ViewTopbar extends Observable implements Observer, ActionListener {
 		adminPanel.add(btnAdminLogout);
 		
 		// costruisco il panel utente
-		userPanel.setBackground(Color.MAGENTA);
 		userPanel.setLayout(new GridLayout(2, 1, 0, 0));
 		
 		userPanel.add(lblUserUsername);
@@ -181,55 +178,3 @@ public class ViewTopbar extends Observable implements Observer, ActionListener {
 		
 	}
 }
-
-
-	
-/*
-	
-	public void refreshEastPanel() {
-		this.remove(panelEast);
-		
-		if(isAutenticato==false) {
-			panelEast = panelLS;
-		} else if(isPersonale==false) {
-			panelEast = panelUtente;
-			((JLabel)panelEast.getComponent(0)).setText(username);
-			controller.showHome();
-		} else {
-			panelEast = panelPersonale;
-			((JLabel)panelPersonale.getComponent(0)).setText(username);
-			controller.showHome();
-		}
-
-		this.add(panelEast, BorderLayout.EAST);
-		this.repaint();
-		this.revalidate();
-	}
-
-	public void aggiungiAlCarrello() {
-		oggettiNelCarrello++;
-		btnCarrello.setText("Carrello (" + Integer.toString(oggettiNelCarrello) + ")");
-		checkCarrelloVuoto();
-	}
-	
-	public void rimuoviDalCarrello() {
-		oggettiNelCarrello--;
-		btnCarrello.setText("Carrello (" + Integer.toString(oggettiNelCarrello) + ")");
-		checkCarrelloVuoto();
-		
-		if(oggettiNelCarrello==0) {
-			controller.showHome();
-		} else {
-			controller.showCarrello();
-		}
-	}
-	
-	public void svuotaCarrello() {
-		oggettiNelCarrello = 0;
-		btnCarrello.setText("Carrello (0)");
-		checkCarrelloVuoto();
-		this.repaint();
-	}
-	
-	*/
-

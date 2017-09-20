@@ -18,12 +18,13 @@ import Model.ModelCartEntry;
 public class ViewCartEntry extends Observable implements Observer, ActionListener{
 	
 	private ModelCartEntry model;
+	private JPanel panel;
 	
 	private JLabel lblQuantita;
 	private JLabel lblTitolo;
 	private JButton btnMinus;
 	private JButton btnPlus;
-	private JPanel panel;
+	private JLabel lblPrezzo;
 	
 	public ViewCartEntry(ModelCartEntry model, Disc disc, int quantity) {
 		
@@ -47,8 +48,8 @@ public class ViewCartEntry extends Observable implements Observer, ActionListene
 		FlowLayout flowLayout = (FlowLayout) panelPrezzo.getLayout();
 		flowLayout.setAlignment(FlowLayout.TRAILING);
 		
-		JLabel lblPrezzo = new JLabel(disc.getPrice() + "€");
-		lblPrezzo.setPreferredSize(new Dimension(80, 30));
+		lblPrezzo = new JLabel(disc.getPrice() + "€");
+		lblPrezzo.setPreferredSize(new Dimension(100, 30));
 		lblPrezzo.setHorizontalAlignment(SwingConstants.TRAILING);
 		panelPrezzo.add(lblPrezzo);
 		
@@ -96,6 +97,10 @@ public class ViewCartEntry extends Observable implements Observer, ActionListene
 		} else {
 			btnPlus.setEnabled(false);
 		}
+	}
+	
+	public void setSuper() {
+		lblPrezzo.setText(model.getDisc().getPrice()*0.7 + "€");
 	}
 	
 	@Override

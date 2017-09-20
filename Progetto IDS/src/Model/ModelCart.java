@@ -79,6 +79,8 @@ public class ModelCart extends Observable {
 		} else {
 			cart.add(disc, quantity);
 		}
+		this.setChanged();
+		this.notifyObservers();
 	}
 	
 	public boolean contains(Disc disc) {
@@ -91,6 +93,7 @@ public class ModelCart extends Observable {
 	}
 	
 	public double getTotalPrice() {
+		synchCart();
 		double price = 0.0;
 		
 		for(Disc disc : cart.getCatalog()) {

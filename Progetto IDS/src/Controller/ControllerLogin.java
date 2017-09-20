@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.DatabaseQuery;
 import Model.ModelLogin;
 import View.ViewLogin;
 
@@ -12,6 +13,7 @@ public class ControllerLogin implements Observer {
 	private ModelLogin model;
 	private ViewLogin view;
 	private ApplicationController controller = ApplicationController.getInstance();
+	private DatabaseQuery db = DatabaseQuery.getInstance();
 	
 	public ControllerLogin(){
 		this.model = new ModelLogin();
@@ -31,9 +33,9 @@ public class ControllerLogin implements Observer {
 			} else if("login".equals((String)arg)){
 				if (model.checkUserPass(view.getUsername(),view.getPassword())){
 					if (model.isAdmin()) {
-						controller.login(view.getUsername(), true, false);
+						controller.login(view.getUsername(), true, db.isSuper(view.getUsername()));
 					} else if(model.isClient()) {
-						controller.login(view.getUsername(), false, false);
+						controller.login(view.getUsername(), false, db.isSuper(view.getUsername()));
 					}
 					controller.showHome();
 				} else {
