@@ -94,9 +94,13 @@ public class BandDialog extends JDialog implements ActionListener {
 			if(db.existsGenre(txtGenre.getText().trim())==0) {
 				db.addGenre(txtGenre.getText().trim());
 			}
-			db.addBand(band, txtGenre.getText().trim(), Integer.valueOf(txtYear.getText()));
-			this.setVisible(false);
-			this.dispose();
+			try {
+				db.addBand(band, txtGenre.getText().trim(), Integer.valueOf(txtYear.getText()));
+				this.setVisible(false);
+				this.dispose();
+			} catch (Exception exception) {
+				JOptionPane.showMessageDialog(null, "Impossible to insert the band.", "ERROR", JOptionPane.ERROR_MESSAGE, null);
+			}
 		}
 	}
 
