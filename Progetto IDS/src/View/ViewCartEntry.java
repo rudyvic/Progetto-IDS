@@ -72,7 +72,7 @@ public class ViewCartEntry extends Observable implements Observer, ActionListene
 		
 		JPanel panelRimuovi = new JPanel();
 		
-		JButton btnRimuovi = new JButton("Rimuovi");
+		JButton btnRimuovi = new JButton("Remove");
 		panelRimuovi.add(btnRimuovi);
 		btnRimuovi.addActionListener(this);
 		btnRimuovi.setActionCommand("btnRimuovi");

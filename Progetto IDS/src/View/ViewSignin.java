@@ -48,7 +48,7 @@ public class ViewSignin extends Observable implements Observer, ActionListener {
 		
 		txtUsername = new JTextField();
 		usernamePanel.add(txtUsername);
-		txtUsername.setColumns(10);
+		txtUsername.setColumns(20);
 		
 		JPanel passwordPanel = new JPanel();
 		centerPanel.add(passwordPanel);
@@ -57,7 +57,7 @@ public class ViewSignin extends Observable implements Observer, ActionListener {
 		passwordPanel.add(lblPassword);
 		
 		txtPassword = new JTextField();
-		txtPassword.setColumns(10);
+		txtPassword.setColumns(20);
 		passwordPanel.add(txtPassword);
 		
 		JPanel namePanel = new JPanel();
@@ -67,7 +67,7 @@ public class ViewSignin extends Observable implements Observer, ActionListener {
 		namePanel.add(lblName);
 		
 		txtName = new JTextField();
-		txtName.setColumns(10);
+		txtName.setColumns(20);
 		namePanel.add(txtName);
 		
 		JPanel surnamePanel = new JPanel();
@@ -77,7 +77,7 @@ public class ViewSignin extends Observable implements Observer, ActionListener {
 		surnamePanel.add(lblSurname);
 		
 		txtSurname = new JTextField();
-		txtSurname.setColumns(10);
+		txtSurname.setColumns(20);
 		surnamePanel.add(txtSurname);
 		
 		JPanel idCodePanel = new JPanel();
@@ -87,7 +87,7 @@ public class ViewSignin extends Observable implements Observer, ActionListener {
 		idCodePanel.add(lblIdCode);
 		
 		txtIdCode = new JTextField();
-		txtIdCode.setColumns(10);
+		txtIdCode.setColumns(20);
 		idCodePanel.add(txtIdCode);
 		
 		JPanel addressPanel = new JPanel();
@@ -97,7 +97,7 @@ public class ViewSignin extends Observable implements Observer, ActionListener {
 		addressPanel.add(lblAddress);
 		
 		txtAddress = new JTextField();
-		txtAddress.setColumns(10);
+		txtAddress.setColumns(20);
 		addressPanel.add(txtAddress);
 		
 		
@@ -108,7 +108,7 @@ public class ViewSignin extends Observable implements Observer, ActionListener {
 		CityPanel.add(lblCity);
 		
 		txtCity = new JTextField();
-		txtCity.setColumns(10);
+		txtCity.setColumns(20);
 		CityPanel.add(txtCity);
 		
 		JPanel phonePanel = new JPanel();
@@ -118,7 +118,7 @@ public class ViewSignin extends Observable implements Observer, ActionListener {
 		phonePanel.add(lblPhone);
 		
 		txtPhone = new JTextField();
-		txtPhone.setColumns(10);
+		txtPhone.setColumns(20);
 		phonePanel.add(txtPhone);
 		
 		JPanel cellphonePanel = new JPanel();
@@ -129,7 +129,7 @@ public class ViewSignin extends Observable implements Observer, ActionListener {
 		
 		txtCellphone = new JTextField();
 		cellphonePanel.add(txtCellphone);
-		txtCellphone.setColumns(10);
+		txtCellphone.setColumns(20);
 		
 		JPanel southPanel = new JPanel();
 		panel.add(southPanel, BorderLayout.SOUTH);

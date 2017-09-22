@@ -25,7 +25,7 @@ public class ViewDiscPage extends Observable implements Observer, ActionListener
 		
 		frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		frame.setBounds(100, 100, 529, 313);
+		frame.setBounds(100, 100, 529, 613);
 		frame.setAlwaysOnTop(true);
 		panel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		panel.setLayout(new BorderLayout(0, 0));
@@ -41,7 +41,7 @@ public class ViewDiscPage extends Observable implements Observer, ActionListener
 		centerPanel.add(lblTitle);
 		
 		JLabel ltlSongs = new JLabel("<html>Songs:<br>" + model.getDisc().getSongs());
-		ltlSongs.setBounds(277, 77, 204, 122);
+		ltlSongs.setBounds(277, 77, 204, 422);
 		centerPanel.add(ltlSongs);
 		
 		JLabel lblImage = new JLabel();
@@ -54,7 +54,7 @@ public class ViewDiscPage extends Observable implements Observer, ActionListener
 		centerPanel.add(lblImage);
 		
 		JLabel lblDate = new JLabel("Date: " + model.getDisc().getDate());
-		lblDate.setBounds(277, 250, 204, 16);
+		lblDate.setBounds(277, 550, 204, 16);
 		centerPanel.add(lblDate);
 		
 		JLabel lblGenre = new JLabel("Genre: " + model.getDisc().getGenre());
