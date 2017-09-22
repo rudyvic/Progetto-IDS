@@ -154,6 +154,10 @@ public class ViewSignin extends Observable implements Observer, ActionListener {
 		if(txtIdCode.getText().trim().equals("") || txtUsername.getText().trim().equals("") || txtPassword.getText().trim().equals("") || txtName.getText().trim().equals("") || txtSurname.getText().trim().equals("") || txtAddress.getText().trim().equals("") || txtCity.getText().trim().equals("") || txtPhone.getText().trim().equals("")) {
 			return null;
 		} else {
+			if(txtCellphone.getText().equals("")){
+				return new Person(txtIdCode.getText().trim(), txtUsername.getText().trim(), txtPassword.getText().trim(), txtName.getText().trim(), txtSurname.getText().trim(), txtAddress.getText().trim(), txtCity.getText().trim(), txtPhone.getText().trim(), null);
+			}
+				
 			return new Person(txtIdCode.getText().trim(), txtUsername.getText().trim(), txtPassword.getText().trim(), txtName.getText().trim(), txtSurname.getText().trim(), txtAddress.getText().trim(), txtCity.getText().trim(), txtPhone.getText().trim(), txtCellphone.getText().trim());
 		}
 	}
