@@ -38,9 +38,7 @@ public class ControllerCatalogEntry implements Observer{
 			if("disc page".equals((String)arg)){
 				controller.showDiscPage(model.getDisc());
 			} else if("add to cart".equals((String)arg)){
-				System.out.println("add to cart");
 				view.inTheCart();
-				System.out.println(disc.getTitle());
 				controller.discInTheCart(disc);
 			}
 		}

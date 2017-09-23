@@ -85,10 +85,6 @@ public class ControllerAdminAddNewDisc implements Observer {
 		if(arg instanceof String) {
 			if("cancel".equals((String)arg)){
 				controller.showAdminHome();
-			} else if("insert disc".equals((String)arg)){
-				if(insertDisc()) {
-					controller.showAdminHome();
-				}
 			} else if("band".equals((String)arg)){
 				view.setBand();
 			} else if("musician".equals((String)arg)){
