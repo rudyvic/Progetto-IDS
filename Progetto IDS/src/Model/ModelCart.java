@@ -47,6 +47,7 @@ public class ModelCart extends Observable {
 	public void logout() {
 		this.username = null;
 		isLogin = false;
+		emptyCart();
 	}
 	
 	public ArrayList<Disc> getCart() {

@@ -76,6 +76,7 @@ public class ControllerCart implements Observer {
 	
 	public void logout() {
 		model.logout();
+		
 	}
 	
 	public int cartLength() {
