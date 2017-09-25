@@ -18,7 +18,6 @@ import java.util.Observer;
 public class ViewPayment extends Observable implements Observer, ActionListener {
 	private ModelPayment model;
 	private JPanel panel;
-	private ApplicationController controller = ApplicationController.getInstance();
 	
 	private JComboBox<String> cbxPaymentType;
 	
