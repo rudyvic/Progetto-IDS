@@ -64,7 +64,7 @@ public class ViewHome extends Observable implements Observer, ActionListener {
 		txtFind.setToolTipText("");
 		txtFind.setColumns(40);
 		
-		JButton btnFind = new JButton("Find");
+		JButton btnFind = new JButton("Search");
 		btnFind.addActionListener(this);
 		btnFind.setActionCommand("btnFind");
 		panelFind.add(btnFind);

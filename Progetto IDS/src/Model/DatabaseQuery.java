@@ -10,8 +10,8 @@ public class DatabaseQuery {
 	
 	private static DatabaseQuery db = null;
 	
-	private final String database = "jdbc:postgresql://localhost:5432/eldisondimo";
-	private final String dbUsername = "eldisondimo";
+	private final String database = "jdbc:postgresql://localhost:5432/rudyvic";
+	private final String dbUsername = "rudyvic";
 	private final String dbPassword = "";
 	
 	private DatabaseQuery() {

@@ -2,7 +2,7 @@ package View;
 
 import Model.ModelLogin;
 import javax.swing.JPanel;
-
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
@@ -32,7 +32,7 @@ public class ViewLogin extends Observable implements Observer, ActionListener {
 	private JPanel panel;
 	
 	private JTextField txtUsername;
-	private JTextField txtPassword;
+	private JPasswordField txtPassword;
 	
 	public ViewLogin(ModelLogin model) {
 		this.model = model;
@@ -104,7 +104,7 @@ public class ViewLogin extends Observable implements Observer, ActionListener {
 		gbc_lblPassword.gridy = 1;
 		centerPanel.add(lblPassword, gbc_lblPassword);
 		
-		txtPassword = new JTextField();
+		txtPassword = new JPasswordField();
 		GridBagConstraints gbc_textFieldPassword = new GridBagConstraints();
 		gbc_textFieldPassword.fill = GridBagConstraints.BOTH;
 		gbc_textFieldPassword.gridx = 1;
@@ -122,7 +122,7 @@ public class ViewLogin extends Observable implements Observer, ActionListener {
 	}
 	
 	public String getPassword() {
-		return txtPassword.getText();
+		return String.valueOf(txtPassword.getPassword());
 	}
 	
 	@Override

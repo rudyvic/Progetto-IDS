@@ -71,7 +71,7 @@ public class MusicianDialog extends JDialog implements ActionListener {
 			JPanel instrumentsPanel = new JPanel();
 			contentPanel.add(instrumentsPanel);
 			{
-				JLabel lblInstruments = new JLabel("Instruments");
+				JLabel lblInstruments = new JLabel("Instruments (optional)");
 				instrumentsPanel.add(lblInstruments);
 			}
 			{
@@ -84,7 +84,7 @@ public class MusicianDialog extends JDialog implements ActionListener {
 			JPanel bandPanel = new JPanel();
 			contentPanel.add(bandPanel);
 			{
-				JLabel lblBand = new JLabel("Band");
+				JLabel lblBand = new JLabel("Band (optional)");
 				bandPanel.add(lblBand);
 			}
 			{
@@ -122,18 +122,36 @@ public class MusicianDialog extends JDialog implements ActionListener {
 		} else if("btnProceed".equals(e.getActionCommand())) {
 			DatabaseQuery db = DatabaseQuery.getInstance();
 			
+			if(txtGenre.getText().trim().equals("") || txtYear.getText().trim().equals("")) {
+				JOptionPane.showMessageDialog(null, "<html>Form not complete.", "ERROR", JOptionPane.ERROR_MESSAGE, null);
+				return;
+			}
+			
 			if(db.existsGenre(txtGenre.getText().trim())==0) {
 				db.addGenre(txtGenre.getText().trim());
 			}
 			
-			if(db.existsBand(txtBand.getText())==1) {
-				Musician m = new Musician(musician, txtGenre.getText().trim(), Integer.valueOf(txtYear.getText()), txtInstruments.getText().trim(), txtBand.getText().trim());
+			if(db.existsBand(txtBand.getText().trim())==1) {
+				Musician m;
+				if(txtInstruments.getText().trim().equals("")) {
+					m = new Musician(musician, txtGenre.getText().trim(), Integer.valueOf(txtYear.getText()), null, txtBand.getText().trim());
+				} else {
+					m = new Musician(musician, txtGenre.getText().trim(), Integer.valueOf(txtYear.getText()), txtInstruments.getText().trim(), txtBand.getText().trim());
+				}
 				db.addMusician(m);
 				this.setVisible(false);
 				this.dispose();
 			} else {
 				if(txtBand.getText().trim().equals("")) {
-					JOptionPane.showMessageDialog(null, "<html>You must insert the name of a band.", "ERROR", JOptionPane.ERROR_MESSAGE, null);
+					Musician m;
+					if(txtInstruments.getText().trim().equals("")) {
+						m = new Musician(musician, txtGenre.getText().trim(), Integer.valueOf(txtYear.getText()), null, null);
+					} else {
+						m = new Musician(musician, txtGenre.getText().trim(), Integer.valueOf(txtYear.getText()), txtInstruments.getText().trim(), null);
+					}
+					db.addMusician(m);
+					this.setVisible(false);
+					this.dispose();
 				} else {
 					BandDialog dialog = new BandDialog(txtBand.getText().trim());
 					dialog.setVisible(true);

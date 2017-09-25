@@ -56,7 +56,7 @@ public class ViewCatalog extends Observable implements Observer, ActionListener{
 		txtCerca.setColumns(40);
 		txtCerca.setText(nomeProdotto);
 		
-		JButton btnCerca = new JButton("Cerca");
+		JButton btnCerca = new JButton("Search");
 		btnCerca.addActionListener(this);
 		btnCerca.setActionCommand("filtro");
 		panelCerca.add(btnCerca);

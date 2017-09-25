@@ -64,7 +64,7 @@ public class ViewAdminAddNewDisc extends Observable implements Observer, ActionL
 		songsPanel.add(lblSongs);
 		
 		txtSongs = new JTextField();
-		txtSongs.setColumns(10);
+		txtSongs.setColumns(40);
 		songsPanel.add(txtSongs);
 		
 		JPanel imagePanel = new JPanel();
@@ -95,7 +95,7 @@ public class ViewAdminAddNewDisc extends Observable implements Observer, ActionL
 		descriptionPanel.add(lblDescription);
 		
 		txtDescription = new JTextField();
-		txtDescription.setColumns(10);
+		txtDescription.setColumns(40);
 		descriptionPanel.add(txtDescription);
 		
 		JPanel genrePanel = new JPanel();

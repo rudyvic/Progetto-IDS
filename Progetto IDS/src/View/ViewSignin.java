@@ -18,7 +18,7 @@ public class ViewSignin extends Observable implements Observer, ActionListener {
 	private JPanel panel;
 	
 	private JTextField txtUsername;
-	private JTextField txtPassword;
+	private JPasswordField txtPassword;
 	private JTextField txtName;
 	private JTextField txtSurname;
 	private JTextField txtAddress;
@@ -56,7 +56,7 @@ public class ViewSignin extends Observable implements Observer, ActionListener {
 		JLabel lblPassword = new JLabel("Password (at least 7 chars)");
 		passwordPanel.add(lblPassword);
 		
-		txtPassword = new JTextField();
+		txtPassword = new JPasswordField();
 		txtPassword.setColumns(20);
 		passwordPanel.add(txtPassword);
 		
@@ -151,14 +151,14 @@ public class ViewSignin extends Observable implements Observer, ActionListener {
 	}
 	
 	public Person getPerson() {
-		if(txtIdCode.getText().trim().equals("") || txtUsername.getText().trim().equals("") || txtPassword.getText().trim().equals("") || txtName.getText().trim().equals("") || txtSurname.getText().trim().equals("") || txtAddress.getText().trim().equals("") || txtCity.getText().trim().equals("") || txtPhone.getText().trim().equals("")) {
+		if(txtIdCode.getText().trim().equals("") || txtUsername.getText().trim().equals("") || String.valueOf(txtPassword.getPassword()).trim().equals("") || txtName.getText().trim().equals("") || txtSurname.getText().trim().equals("") || txtAddress.getText().trim().equals("") || txtCity.getText().trim().equals("") || txtPhone.getText().trim().equals("")) {
 			return null;
 		} else {
 			if(txtCellphone.getText().equals("")){
-				return new Person(txtIdCode.getText().trim(), txtUsername.getText().trim(), txtPassword.getText().trim(), txtName.getText().trim(), txtSurname.getText().trim(), txtAddress.getText().trim(), txtCity.getText().trim(), txtPhone.getText().trim(), null);
+				return new Person(txtIdCode.getText().trim(), txtUsername.getText().trim(), String.valueOf(txtPassword.getPassword()).trim(), txtName.getText().trim(), txtSurname.getText().trim(), txtAddress.getText().trim(), txtCity.getText().trim(), txtPhone.getText().trim(), null);
 			}
 				
-			return new Person(txtIdCode.getText().trim(), txtUsername.getText().trim(), txtPassword.getText().trim(), txtName.getText().trim(), txtSurname.getText().trim(), txtAddress.getText().trim(), txtCity.getText().trim(), txtPhone.getText().trim(), txtCellphone.getText().trim());
+			return new Person(txtIdCode.getText().trim(), txtUsername.getText().trim(), String.valueOf(txtPassword.getPassword()), txtName.getText().trim(), txtSurname.getText().trim(), txtAddress.getText().trim(), txtCity.getText().trim(), txtPhone.getText().trim(), txtCellphone.getText().trim());
 		}
 	}
 
