@@ -61,10 +61,10 @@ public class ViewCart extends Observable implements Observer, ActionListener {
 	
 	private void updatePrice() {
 		if(model.isSuper(model.getUsername()))
-			lblTotalPrice.setText(Double.toString(model.getTotalPrice()*0.7) + "€");
+			lblTotalPrice.setText(String.format("%.2f",model.getTotalPrice()*0.7) + "€");
 		
 		else
-			lblTotalPrice.setText(Double.toString(model.getTotalPrice()) + "€");
+			lblTotalPrice.setText(String.format("%.2f",model.getTotalPrice()) + "€");
 	}
 	
 	public void setList(List<JPanel> list) {

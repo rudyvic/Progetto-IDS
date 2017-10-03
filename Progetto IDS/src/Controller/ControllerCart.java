@@ -97,7 +97,7 @@ public class ControllerCart implements Observer {
 			} else if("payment".equals((String)arg)){
 				if(controller.controllerTopbar.isLogin()) {
 					if(controller.controllerTopbar.isSuper()) {
-						JOptionPane.showMessageDialog(null, "<html>Congrats, you are a super user! <br>You pay " + model.getTotalPrice()*0.7 + "€ instead of " + model.getTotalPrice() + "€.", "SUPER USER", JOptionPane.INFORMATION_MESSAGE, null);
+						JOptionPane.showMessageDialog(null, "<html>Congrats, you are a super user! <br>You pay " + String.format("%.2f",model.getTotalPrice()*0.7) + "€ instead of " + String.format("%.2f",model.getTotalPrice()) + "€.", "SUPER USER", JOptionPane.INFORMATION_MESSAGE, null);
 					}
 					controller.showPayment();
 				} else {

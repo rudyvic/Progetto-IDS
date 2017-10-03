@@ -48,7 +48,7 @@ public class ViewCartEntry extends Observable implements Observer, ActionListene
 		FlowLayout flowLayout = (FlowLayout) panelPrezzo.getLayout();
 		flowLayout.setAlignment(FlowLayout.TRAILING);
 		
-		lblPrezzo = new JLabel(disc.getPrice() + "€");
+		lblPrezzo = new JLabel(String.format("%.2f",disc.getPrice()) + "€");
 		lblPrezzo.setPreferredSize(new Dimension(100, 30));
 		lblPrezzo.setHorizontalAlignment(SwingConstants.TRAILING);
 		panelPrezzo.add(lblPrezzo);
@@ -100,7 +100,7 @@ public class ViewCartEntry extends Observable implements Observer, ActionListene
 	}
 	
 	public void setSuper() {
-		lblPrezzo.setText(model.getDisc().getPrice()*0.7 + "€");
+		lblPrezzo.setText(String.format("%.2f",model.getDisc().getPrice()*0.7) + "€");
 	}
 	
 	@Override

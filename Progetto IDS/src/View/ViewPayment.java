@@ -37,7 +37,7 @@ public class ViewPayment extends Observable implements Observer, ActionListener 
 		cbxPaymentType.setModel(new DefaultComboBoxModel(new String[] {"Carta di credito", "Bonifico", "PayPal"}));
 		centerPanel.add(cbxPaymentType);
 		
-		JLabel lblTotalPrice = new JLabel(model.getPrice() + "€");
+		JLabel lblTotalPrice = new JLabel(String.format("%.2f",model.getPrice()) + "€");
 		centerPanel.add(lblTotalPrice);
 		
 		JPanel northPanel = new JPanel();
